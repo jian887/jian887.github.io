@@ -147,12 +147,14 @@
 <meta property="og:site_name" content="两角纸博客">
 <meta property="og:description" content="实验一　词法分析器**的设计** 【实验目的】 1．  掌握生成词法分析器的方法，加深对词法分析原理的理解。 2．  掌握设计、编制并调试词法分析程序的思想和方法。 3．  本实验是高级语言程序设计、数据结构和编译原理中词法分析原理等知识的综合。 【实验性质】 综合性实验（学时数：2H） 【实验内容及要求】 1． 设计并实现一个四则运算的计算器,通过命令行方式启动,可以通过键盘输入整个算式,然后">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="d:/Hexo/source/_posts/编译原理实验指导书/clip_image001.gif">
-<meta property="og:updated_time" content="2019-04-17T09:19:52.793Z">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image016_u9eduy.gif">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image017_phl7tq.gif">
+<meta property="og:updated_time" content="2019-04-23T13:33:58.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理实验指导书">
 <meta name="twitter:description" content="实验一　词法分析器**的设计** 【实验目的】 1．  掌握生成词法分析器的方法，加深对词法分析原理的理解。 2．  掌握设计、编制并调试词法分析程序的思想和方法。 3．  本实验是高级语言程序设计、数据结构和编译原理中词法分析原理等知识的综合。 【实验性质】 综合性实验（学时数：2H） 【实验内容及要求】 1． 设计并实现一个四则运算的计算器,通过命令行方式启动,可以通过键盘输入整个算式,然后">
-<meta name="twitter:image" content="d:/Hexo/source/_posts/编译原理实验指导书/clip_image001.gif">
+<meta name="twitter:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif">
 
 
 
@@ -492,12 +494,24 @@
                 
               
 
-              <time title="创建时间：2019-04-17 16:55:02 / 修改时间：09:19:52" itemprop="dateCreated datePublished" datetime="2019-04-17T16:55:02Z">2019-04-17</time>
+              <time title="创建时间：2019-04-17 16:55:02" itemprop="dateCreated datePublished" datetime="2019-04-17T16:55:02Z">2019-04-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-23 13:33:58" itemprop="dateModified" datetime="2019-04-23T13:33:58Z">2019-04-23</time>
               
             
           </span>
@@ -579,10 +593,11 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="D:\Hexo\source\_posts\编译原理实验指导书\clip_image001.gif" alt></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif" alt></p>
 <p>​                           </p>
 <p>​                                 </p>
 <p>图1.1 词法分析主程序示意图</p>
@@ -673,6 +688,92 @@ while(st_line[st_line_pos]!=&apos;\0&apos;){
 <p>void set_line(char *line)<br>{<br>    st_line=line;<br>    st_line_pos=0;<br>}</p>
 <p>void parse_line(char *buf)<br>{<br>    Token token;<br>    char str[MAX_TOKEN_SIZE];<br>    set_line(buf);<br>    for(;;){<br>    get_token(&amp;token);<br>    if(token.kind==END_OF_LINE_TOKEN){<br>        break;<br>    }else {<br>        printf(“kind..%d,str..%s\n”,token.kind,token.str);<br>        if(token.kind=NUMBER_TOKEN)<br>            sscanf(token.str,”%lf”,&amp;token.value);<br>      }<br>    }<br>}</p>
 <p>int main()<br>{<br>    char buf[1024];<br>    while(fgets(buf,1024,stdin)!=NULL){<br>        parse_line(buf);<br>    }<br>    return 0;<br>}</p>
+<p><strong>实验二　用递归下降法实现语法分析</strong></p>
+<p><strong>【实验目的】</strong></p>
+<p>1.掌握用递归下降分析法进行语法分析的方法。加深对自顶向下语法分析原理的理解。</p>
+<p>2.掌握设计、编制并调试自顶向下语法分析程序的思想和方法。</p>
+<p>3.本实验是高级语言程序设计、数据结构和编译原理中词法分析、自顶向下语法分析原理等知</p>
+<p>识的综合。由于语法分析是在词法分析的基础上进行的，且词法分析器输出的结果即单词符号</p>
+<p>或单词符号序列是语法分析的输入。</p>
+<p><strong>【实验性质】</strong></p>
+<p>综合性实验（学时数：2H）</p>
+<p><strong>【实验要求】</strong></p>
+<p>\1.  调用实验一的get_token函数进行词法分析，使用递归下降法作语法分析器，实现计算器的功能。</p>
+<p>\2.  实验前请仔细阅读实验预习提示，参考所附完整的源代码,请在实验报告中写出该分析器所使用的语法规则。</p>
+<p>\3. 本实验建议学时2学时。</p>
+<p><strong>【实验预习提示】</strong></p>
+<p>1、   语法分析程序的算法思想</p>
+<p>（1）   主程序示意图如图4.1所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><img src="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image016_u9eduy.gif" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>图4.1 递归下降法语法分析主程序示意图</p>
+<p>（2）   递归下降分析程序示意图如图4.2所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><img src="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image017_phl7tq.gif" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>​                             图4.2 递归下降分析程序示意图</p>
+<p>2.参考源程序parser.c：</p>
+<p>#include&lt;stdio.h&gt;</p>
+<p>#include&lt;stdlib.h&gt;</p>
+<p>#include”token.h”</p>
+<p>#include”lexicanalyzer.c”</p>
+<p>#define LINE_BUF_SIZE 1024</p>
+<p>static Token st_look_abead_token;<br>static int st_look_abead_token_exists;</p>
+<p>static void my_get_token(Token <em>token){<br>    if (st_look_abead_token_exists){
+        </em>token = st_look_abead_token;<br>        st_look_abead_token_exists = 0;<br>    }<br>    else<br>    {<br>        get_token(token);<br>    }<br>}</p>
+<p>static void unget_token(Token <em>token)<br>{<br>    st_look_abead_token = </em>token;<br>    st_look_abead_token_exists = 1;<br>}</p>
+<p>//double parse_expression();</p>
+<p>static double parse_primary_expression()<br>{<br>    Token token;<br>    my_get_token(&amp;token);<br>    if (token.kind==NUMBER_TOKEN)<br>    {<br>        return token.value;<br>    }<br>    fprintf(stderr, “syntax error.\n”);<br>    exit(1);<br>    return 0.0;<br>}</p>
+<p>static double parse_term()<br>{<br>    double v1;<br>    double v2;<br>    Token token;<br>    v1 = parse_primary_expression();<br>    while (1){<br>        my_get_token(&amp;token);<br>        if (token.kind != MUL_OPERATOR_TOKEN &amp;&amp; token.kind != DIV_OPERATOR_TOKEN){<br>            unget_token(&amp;token);<br>            break;<br>        }<br>        v2 = parse_primary_expression();<br>        if (token.kind == MUL_OPERATOR_TOKEN)<br>            v1 *= v2;<br>        else if (token.kind == DIV_OPERATOR_TOKEN)<br>            v1 /= v2;<br>    }<br>    return v1;<br>}</p>
+<p>double parse_expression()<br>{<br>    double v1;<br>    double v2;<br>    Token token;</p>
+<pre><code>v1 = parse_term();
+while (1){
+    my_get_token(&amp;token);
+    if (token.kind != ADD_OPERATOR_TOKEN &amp;&amp; token.kind != SUB_OPERATOR_TOKEN){
+        unget_token(&amp;token);
+        break;
+    }
+    v2 = parse_term();
+    if (token.kind == ADD_OPERATOR_TOKEN)
+        v1 += v2;
+    else if (token.kind == SUB_OPERATOR_TOKEN)
+        v1 -= v2;
+    else 
+        unget_token(&amp;token);
+}
+return v1;
+</code></pre><p>}</p>
+<p>double parse_line()<br>{<br>    double value;<br>    st_look_abead_token_exists = 0;<br>    value = parse_expression();<br>    return value;<br>}<br>int main(){<br>    char line[LINE_BUF_SIZE];<br>    double value;</p>
+<pre><code>while (fgets(line, LINE_BUF_SIZE, stdin) != NULL){
+    set_line(line);
+    value = parse_line();
+    printf(&quot;&gt;&gt;%f\n&quot;, value);
+}
+return 0;
+</code></pre><p>}</p>
 
       
     </div>

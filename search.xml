@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[yii2.0]]></title>
+    <url>%2F2019%2F05%2F05%2Fyii2-0%2F</url>
+    <content type="text"><![CDATA[yii 2.0 目录结构 composer.json Composer配置文件，描述包信息 config/ 包含应用配置及其他配置 ​ console.php 控制台应用配置信息 ​ web.php web应用配置信息 commands/ 包含控制台命令类 controllers/ 包含控制器类 MVC中的C models/ 包含模型类 MVC中的M runtime/ 包含Yii在运行时生成的文件，例如日志和缓存文件 vendor/ 包含已经安装的Composer包，包括Yii框架本身 views/ 包含视图文件 MVC中的V web/ Web 应用跟目录，包含Web入口文件 ​ assets/ 包含Yii发布的资源文件（JavaScript和css） ​ index.php 应用入口文件 yii Yii控制台命令执行脚本]]></content>
+      <categories>
+        <category>Yii框架</category>
+      </categories>
+      <tags>
+        <tag>Yii2.0</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java]]></title>
     <url>%2F2019%2F04%2F25%2FJava%2F</url>
     <content type="text"><![CDATA[1.接口 ​ 使用关键字interface来定义一个接口 例： interface jiekou { ​ final int MAX=100; ​ void add(); ​ float sum(float x, float y); ​ } 2.接口声明 interface 接口名字 ； 3.接口体 接口体只有抽象方法，没有普通的方法，且接口体中所有的常量的访问权限一定都是public，而且是static 常量(允许省略public final和static 修饰符) 接口实现]]></content>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[动态规划]]></title>
+    <url>%2F2019%2F05%2F14%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%2F</url>
+    <content type="text"><![CDATA[动态规划的核心是状态和状态转移方程]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[yii2.0]]></title>
     <url>%2F2019%2F05%2F05%2Fyii2-0%2F</url>
     <content type="text"><![CDATA[yii 2.0 目录结构 composer.json Composer配置文件，描述包信息 config/ 包含应用配置及其他配置 ​ console.php 控制台应用配置信息 ​ web.php web应用配置信息 commands/ 包含控制台命令类 controllers/ 包含控制器类 MVC中的C models/ 包含模型类 MVC中的M runtime/ 包含Yii在运行时生成的文件，例如日志和缓存文件 vendor/ 包含已经安装的Composer包，包括Yii框架本身 views/ 包含视图文件 MVC中的V web/ Web 应用跟目录，包含Web入口文件 ​ assets/ 包含Yii发布的资源文件（JavaScript和css） ​ index.php 应用入口文件 yii Yii控制台命令执行脚本]]></content>

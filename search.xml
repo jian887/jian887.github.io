@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mvc入门笔记]]></title>
+    <url>%2F2019%2F07%2F26%2FSpringmvc%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Spring MVC中MVC指的是什么 MVC是一种设计模式，目的是让HTML代码和业务逻辑代码分开，让代码看起来更加清晰，便于开发。 Model（数据模型）:与后台数据库联系，用来和View(视图)之间的数据交互、传值。 View(视图)：指视图页面，包含（JSP、freeMarker、Velocity、Thymeleaf、Tile等）。 Controller(控制器)：Spring MVC 的注解@Controller的类。 三层架构 Dao(数据访问层) Service(业务处理层) Web层（J2ee的内容） Mvc样例代码：wdk9]]></content>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring入门]]></title>
+    <url>%2F2019%2F07%2F17%2Fspring%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[Spring的IOC的底层原理实现 ​ 传统方式开发 ​ spring 优点： 轻量级框架 Ioc容器—–控制反转 Aop 面向切面编程 对事物的支持 对框架的支持]]></content>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[java常见异常]]></title>
     <url>%2F2019%2F07%2F12%2Fjava%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%2F</url>
     <content type="text"><![CDATA[Exception和RuntimeException的概念： Exception：在程序中必须使用try…catch进行处理。 RuntimeException：可以不使用try…catch进行处理，但是如果有异常产生，则异常将由JVM进行处理。 对于RuntimeException的子类最好也使用异常处理机制。虽然RuntimeException的异常可以不使用try…catch进行处理，但是如果一旦发生异常，则肯定会导致程序中断执行，所以，为了保证程序再出错后依然可以执行，在开发代码时最好使用try…catch的异常处理机制进行处理。 常见的非运行时异常 常见的java异常有哪些 1、常见的java运行时异常有哪些 操作数据库异常：SQLException 输入输出异常：IOException 文件未找到异常：FileNotFoundException 反射操作异常：ReflectiveOperationException 类未找到异常: ClassNotFoundException 方法未找到异常：NoSuchMethodException 字段未找到异常：NoSuchFieldException 非法访问权限异常：IllegalAccessException 实例化异常：InstantiationException 不支持克隆异常：CloneNotSupportedException 被中止异常：InterruptedException 2、什么情况下会抛出这些异常 1.java.lang.SQLException sql语句异常种类十分多，通常都是sql语句、数据库执行错误导致，常见的表现有： invalid column name 无效列名 table or view does not exist 表或者视图不存在 cannot insert NULL into () 不能将空值插入 缺少表达式 SQL 命令未正确结束 在操作数据库时需要考虑全面，尽量避免该异常。 2.java.lang.IOException 该异常种类也十分多（拥有很多子类），尤其对文件的操作，以及android开发。常见的表现有： FileNotFoundException 文件找不到。 InvalidPropertiesFormatException 输入内容不符合属性集的正确 XML 文档类型。 3.java.lang.FileNotFoundException 该异常的解释是：文件不存在异常。该异常继承于 IOException。这个异常通常是获取文件时，文件路径或文件名称错误导致的。 4.java.lang.ReflectiveOperationException 该异常的解释是：反射操作相关的异常。 由于反射的特殊性，类、方法、属性均使用String作为名称进行操作，对于该类异常一定要十分注意。 了解反射看这里：什么是java中的反射 5.java.lang.ClassNotFoundException 该异常的解释是：指定的类不存在。该异常继承于ReflectiveOperationException。 这个异常通常是在使用反射时，或者服务端引入jar包时抛出。 使用反射时，根据类名（字符串）获取Class时，包、类名有误会造成该异常。 6.java.lang.NoSuchMethodException 该异常的解释是：指定的方法不存在。该异常继承于ReflectiveOperationException。 这个异常通常是在使用反射时抛出。 使用反射时，根据方法名（字符串）调用Method时，方法名有误会造成该异常。 7.java.lang.NoSuchFieldException** 该异常的解释是：指定的字段不存在。该异常继承于ReflectiveOperationException。 这个异常通常是在使用反射时抛出。 使用反射时，根据字段名（字符串）获取、操作Field时，字段名有误会造成该异常。 8.java.lang.IllegalAccessException 该异常的解释是：没有访问权限。 当应用程序要调用一个类，但当前的方法即没有对该类的访问权限便会出现这个异常。 最常见的地方即在使用反射调用private方法/属性时会抛出该异常，将private方法/属性共有化public即可。 9.java.lang.InstantiationException 该异常的解释是：实例化异常。该异常继承于ReflectiveOperationException。 当试图通过newInstance()方法创建某个类的实例，而该类是一个抽象类或接口时，抛出该异常。 10.java.lang.CloneNotSupportedException 该异常的解释是：不支持克隆异常。该异常继承于 ReflectiveOperationException。 当没有实现Cloneable接口或者不支持克隆方法时,调用其clone()方法则抛出该异常。 11.java.lang.InterruptedException 该异常的解释是：被中止异常。 当某个线程处于长时间的等待、休眠或其他暂停状态，而此时其他的线程通过Thread的interrupt方法终止该线程时抛出该异常。]]></content>

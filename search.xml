@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[修改电脑的Mac地址]]></title>
+    <url>%2F2019%2F10%2F23%2F%E4%BF%AE%E6%94%B9%E7%94%B5%E8%84%91%E7%9A%84Mac%E5%9C%B0%E5%9D%80%2F</url>
+    <content type="text"><![CDATA[win10怎么修改mac地址 如何修改网卡的物理地址1、开始菜单里点击设置 2、点击网络和Internet 3、点击更改适配器选项 4、鼠标右键点击以太网或者是本地连接，然后点击属性 5、进入以太网属性点击配置 6、然后点击高级在属性下选择网络地址然后在旁边输入要改的mac地址就可以了]]></content>
+      <categories>
+        <category>修改Mac地址</category>
+      </categories>
+      <tags>
+        <tag>修改Mac地址</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jqGridColModel参数]]></title>
+    <url>%2F2019%2F07%2F29%2FjqGridColModel%E5%8F%82%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[jqGrid|初始化|参数 名称 描述 url 获取数据地址 datatype 从服务器端返回的数据类型，默认为xml。可选类型有：xml，local，json等。 mtype ajax提交方式，POST或者GET。默认GET。 colNames 列显示名称，是一个对象数组。 colModel 常用到的属性：name：列显示的名称； index：传到服务器端用来排列用的列名称；width：列宽度；align：对齐方式；sortable：是否可以排序； pager 定义翻页用的导航栏，必须是有效的html元素。翻页工具可以放在页面的任意位置。 rowNum 在grid上显示记录条数，这个参数要被传递到后台。 rowList 一个下拉选择框，用来改变显示记录数，当选择时会覆盖rowNum参数传递到后台。 viewrecords 定义是否要显示总记录数 caption 表格名称 direction 表格中文字的显示方向，从左向右（ltr）或者从右向左（rtl） editurl 定义对form编辑时的url height 表格高度，可以是数字，像素值或者百分比 prmNames Default valuesprmNames: {page:“page”,rows:“rows”, sort: “sidx”,order: “sord”, search:“_search”, nd:“nd”, npage:null} 当参数为null时不会被发到服务器端 jqGrid colModel 参数ColModel 是jqGrid里最重要的一个属性，设置表格列的属性。 属性 描述 align 对齐方式。可选：left，center，right； classes 设置列的css。多个class之间用空格分隔，如：‘class1 class2’。表格默认的css属性是ui-ellipsis。 datefmt “/”，“-”，“.”都是有效的日期分隔符。日期格式，string Y-m-d editable 单元格是否可编辑 editoptions 编辑的一系列选项。{name：‘goodsId’， index：‘goodsId’， width：200， editable：true， edittype：‘select’， editoptions：{dataUrl：“goods_goodsEdit.do”}}。动态从服务器端获取数据的例子。 editrules 编辑的规则{name：‘age’， index：‘age’， width：90， editable：true， editrules：{edithidden：true， required：true， number：true， minValue：10， maxValue：100}}，设定年龄的最大值为100，最小值为10，而且为数字类型，并且必输字段。 fixed 列宽度是否要固定不可变 formoptions 对于form进行编辑时的属性设置 formatoptions 对某些列进行格式化的设置 formatter 对列进行格式化时设置的函数名或者类型。 {name：‘sex’， index：‘sex’， align：‘center’， width：60， editable：true， edittype：‘select’， editoptions：{value：‘0：待定；1：男；2：女’}， formatter：function（cellvalue， options， rowObject）{ var temp = “&lt;img src = ‘./img/” if (cellvalue == 1) { temp = temp + “male.png”; } else if (cellvalue == 2) { temp = temp + “female.png”; } else { temp = temp + “user.png”; } temp = temp + “ ‘border = ‘ 0’/&gt; “ return temp; }}, //返回性别的图标 hidden 在初始化表格时是否要隐藏此列。 index 索引。其和后台交互的参数是sidx label 如果colNames为空则用此值来作为列的显示名称，如果都没有设置则使用name值。 name 表格列的名称，所有关键字、保留字都不能作为名称使用，包括subgrid，cb，rn sortable 是否可排序 sorttype 用在当datatype为local时，定义搜索列的类型，可选值：int/integer，对integer排序； float/number/currency，排序数字； date：排序日期； text：排序文本。 width 默认列的宽度，只能是像素值，不能使百分比 unformat ‘unformat’单元格值 edittype 可编辑的类型。可选值：text， textarea， select， checkbox， password， button， image， file。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[mvc入门笔记]]></title>
     <url>%2F2019%2F07%2F26%2FSpringmvc%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Spring MVC中MVC指的是什么 MVC是一种设计模式，目的是让HTML代码和业务逻辑代码分开，让代码看起来更加清晰，便于开发。 Model（数据模型）:与后台数据库联系，用来和View(视图)之间的数据交互、传值。 View(视图)：指视图页面，包含（JSP、freeMarker、Velocity、Thymeleaf、Tile等）。 Controller(控制器)：Spring MVC 的注解@Controller的类。 三层架构 Dao(数据访问层) Service(业务处理层) Web层（J2ee的内容） Mvc样例代码：wdk9]]></content>
@@ -11,7 +27,7 @@
   <entry>
     <title><![CDATA[spring入门]]></title>
     <url>%2F2019%2F07%2F17%2Fspring%E5%85%A5%E9%97%A8%2F</url>
-    <content type="text"><![CDATA[Spring的IOC的底层原理实现 ​ 传统方式开发 ​ spring 优点： 轻量级框架 Ioc容器—–控制反转 Aop 面向切面编程 对事物的支持 对框架的支持]]></content>
+    <content type="text"><![CDATA[Spring的IOC的底层原理实现 ​ 传统方式开发 ​ spring 优点： 轻量级框架 Ioc容器—–控制反转 Aop 面向切面编程 对事物的支持 对框架的支持 导入相应的jar包 在中使用 ​ 组织的唯一标识​ 项目的唯一标识​ 项目的版本]]></content>
       <tags>
         <tag>Spring</tag>
       </tags>

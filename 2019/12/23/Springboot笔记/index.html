@@ -147,7 +147,7 @@
 <meta property="og:site_name" content="两角纸博客">
 <meta property="og:description" content="Spring Boot特性1.能够快速创建基于Spring的应用程序；2.能够直接使用java main方法启动内嵌的Tomcat,Jetty服务器运行Spring boot程序，不需要部署war包文件；3.提供约定的starter POM来简化Maven配置，让Maven的配置变得简单；4.根据项目的Maven依赖配置，Spring boot自动配置Spring,Spring mvc等；5.提供">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T10:45:54.696Z">
+<meta property="og:updated_time" content="2019-12-23T11:25:57.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Springboot笔记">
 <meta name="twitter:description" content="Spring Boot特性1.能够快速创建基于Spring的应用程序；2.能够直接使用java main方法启动内嵌的Tomcat,Jetty服务器运行Spring boot程序，不需要部署war包文件；3.提供约定的starter POM来简化Maven配置，让Maven的配置变得简单；4.根据项目的Maven依赖配置，Spring boot自动配置Spring,Spring mvc等；5.提供">
@@ -347,7 +347,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
 
   </li>
 
@@ -471,12 +471,24 @@
                 
               
 
-              <time title="创建时间：2019-12-22 17:13:52 / 修改时间：10:45:54" itemprop="dateCreated datePublished" datetime="2019-12-22T17:13:52Z">2019-12-22</time>
+              <time title="创建时间：2019-12-22 17:13:52" itemprop="dateCreated datePublished" datetime="2019-12-22T17:13:52Z">2019-12-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-23 11:25:57" itemprop="dateModified" datetime="2019-12-23T11:25:57Z">2019-12-23</time>
               
             
           </span>
@@ -554,6 +566,41 @@
       
         <h2 id="Spring-Boot特性"><a href="#Spring-Boot特性" class="headerlink" title="Spring Boot特性"></a>Spring Boot特性</h2><p>1.能够快速创建基于Spring的应用程序；<br>2.能够直接使用java main方法启动内嵌的Tomcat,Jetty服务器运行Spring boot程序，不需要部署war包文件；<br>3.提供约定的starter POM来简化Maven配置，让Maven的配置变得简单；<br>4.根据项目的Maven依赖配置，Spring boot自动配置Spring,Spring mvc等；<br>5.提供了程序的健康等功能；<br>6.基本可以完全不使用XML配置文件，采用注解配置。</p>
 <h2 id="Spring-Boot四大核心"><a href="#Spring-Boot四大核心" class="headerlink" title="Spring Boot四大核心"></a>Spring Boot四大核心</h2><p>1.自动配置：针对很多Spring应用程序和常见的应用功能，Spring boot能自动提供相关配置；：<br>2.起步依赖：告诉Spring boot需要什么功能,它就能引入需要的依赖库；<br>3.Actuator:让你能够深入运行中的Spring Boot应用程序，一探Spring boot程序的内部信息；<br>4.命令行界面:这是Spring Boot的可选特性，主要针对Groovy语言使用。</p>
+<h2 id="Spring-boot下的Spring-MVC下的注解"><a href="#Spring-boot下的Spring-MVC下的注解" class="headerlink" title="Spring boot下的Spring MVC下的注解"></a><strong>Spring boot下的Spring MVC下的注解</strong></h2><h3 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h3><ul>
+<li>被Controller注解的类将会是一个控制器类，即MVC中的C的角色</li>
+<li>它不需要继承其它的类，也不需要实现接口</li>
+<li>它也不用@Component来注解，但也会被@ComponentScan扫描到，并会被作为Spring的bean置于容器中进行管理</li>
+<li>处理http请求</li>
+</ul>
+<h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><ul>
+<li>它本质上是一个组合注解，即@Controller+@ResponseBody的组合</li>
+<li>默认情况下，它注解的每一个控制器方法都等于使用了@ResponseBody注解，也就是说，方法的返回值被写到响应体中</li>
+<li>用于返回字符串或json数据</li>
+<li>方法的返回值将被写入到HTTP的响应体中，这些内容<ul>
+<li>不放到模型中</li>
+<li>不会解释为视图名</li>
+</ul>
+</li>
+</ul>
+<h3 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h3><ul>
+<li>可以注解类或是方法</li>
+<li>用于映射请求与处理方法</li>
+<li>即URL和对应的方法<ul>
+<li>path与value互为别名，用于配置URI</li>
+<li>method为映射的请求配置参数标识</li>
+<li>consumes为配置请求的数据类型，如JSON</li>
+<li>produces为配置响应的数据类型，如application/json</li>
+</ul>
+</li>
+<li>类似的几个注解<ul>
+<li>@GetMapping</li>
+<li>@PostMapping</li>
+<li>@PutMapping</li>
+<li>@DeleteMapping</li>
+<li>@PatchMapping</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -633,6 +680,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/02/27/SpringBoot经典学习笔记/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -706,7 +757,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -834,7 +885,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot特性"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot四大核心"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot四大核心</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot特性"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot四大核心"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot四大核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot下的Spring-MVC下的注解"><span class="nav-number">3.</span> <span class="nav-text">Spring boot下的Spring MVC下的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller"><span class="nav-number">3.1.</span> <span class="nav-text">@Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestController"><span class="nav-number">3.2.</span> <span class="nav-text">@RestController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestMapping"><span class="nav-number">3.3.</span> <span class="nav-text">@RequestMapping</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -862,7 +913,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

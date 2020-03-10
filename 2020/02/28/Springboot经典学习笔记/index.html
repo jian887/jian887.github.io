@@ -132,13 +132,7 @@
 
 
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-8511538239750965",
-    enable_page_level_ads: true
-  });
-</script>
+<script data-ad-client="ca-pub-8511538239750965" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="description" content="导读：课程概览1. Spring Boot是什么我们知道，从 2002 年开始，Spring 一直在飞速的发展，如今已经成为了在Java EE（Java Enterprise Edition）开发中真正意义上的标准，但是随着技术的发展，Java EE使用 Spring 逐渐变得笨重起来，大量的 XML 文件存在于项目之中。繁琐的配置，整合第三方框架的配置问题，导致了开发和部署效率的降低。   20">
 <meta name="keywords" content="Spring boot">
 <meta property="og:type" content="article">
@@ -173,7 +167,7 @@
 <meta property="og:image" content="https://images.gitbook.cn/83b3f810-b377-11e8-88bf-23cb78d1fb4f">
 <meta property="og:image" content="https://images.gitbook.cn/8ef8a4a0-b377-11e8-911d-27cc5f059829">
 <meta property="og:image" content="https://images.gitbook.cn/6f23c980-b89e-11e8-87f1-559c9b456754">
-<meta property="og:updated_time" content="2020-02-27T14:56:02.233Z">
+<meta property="og:updated_time" content="2020-02-27T15:04:01.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Springboot经典学习笔记">
 <meta name="twitter:description" content="导读：课程概览1. Spring Boot是什么我们知道，从 2002 年开始，Spring 一直在飞速的发展，如今已经成为了在Java EE（Java Enterprise Edition）开发中真正意义上的标准，但是随着技术的发展，Java EE使用 Spring 逐渐变得笨重起来，大量的 XML 文件存在于项目之中。繁琐的配置，整合第三方框架的配置问题，导致了开发和部署效率的降低。   20">
@@ -498,7 +492,7 @@
                 
               
 
-              <time title="创建时间：2020-02-27 22:54:40 / 修改时间：14:56:02" itemprop="dateCreated datePublished" datetime="2020-02-27T22:54:40Z">2020-02-27</time>
+              <time title="创建时间：2020-02-27 22:54:40 / 修改时间：15:04:01" itemprop="dateCreated datePublished" datetime="2020-02-27T22:54:40Z">2020-02-27</time>
             
 
             
@@ -616,9 +610,6 @@
 <p>进阶篇（11—17课）主要是介绍 Spring Boot 在项目中拔高一些的技术点，包括集成的一些组件，旨在带领学习者在项目中遇到具体的场景时能够快速集成，完成对应的功能。该部分以 Spring Boot 框架为主线，内容包括拦截器、监听器、缓存、安全认证、分词插件、消息队列等等。  </p>
 <p>认真读完该系列文章之后，学习者会快速了解并掌握 Spring Boot 在项目中最常用的技术点，作者课程的最后，会基于课程内容搭建一个 Spring Boot 项目的空架构，该架构也是从实际项目中剥离出来，学习者可以运用该架构于实际项目中，具备使用 Spring Boot 进行实际项目开发的能力。  </p>
 <p>课程所有源码提供免费下载：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">下载地址</a>。</p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h2 id="4-适合阅读的人群"><a href="#4-适合阅读的人群" class="headerlink" title="4. 适合阅读的人群"></a>4. 适合阅读的人群</h2><p>本课程适合以下人群阅读：</p>
 <ul>
 <li>有一定的Java语言基础，了解Spring、Maven的在校学生或自学者</li>
@@ -665,9 +656,6 @@
 <li>第17课：Spring Boot中结成Lucence</li>
 <li>第18课：Spring Boot搭建实际项目开发中的架构</li>
 </ul>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第01课：Spring-Boot开发环境搭建和项目启动"><a href="#第01课：Spring-Boot开发环境搭建和项目启动" class="headerlink" title="第01课：Spring Boot开发环境搭建和项目启动"></a>第01课：Spring Boot开发环境搭建和项目启动</h1><p>上一节对 SpringBoot 的特性做了一个介绍，本节主要对 <strong>jdk 的配置、Spring Boot工程的构建和项目的启动、Spring Boot 项目工程的结构做一下讲解和分析</strong>。</p>
 <h2 id="1-jdk-的配置"><a href="#1-jdk-的配置" class="headerlink" title="1. jdk 的配置"></a>1. jdk 的配置</h2><p>本课程是使用 IDEA 进行开发，在IDEA 中配置 jdk 的方式很简单，打开<code>File-&gt;Project Structure</code>，如下图所：</p>
 <p><img src="https://images.gitbook.cn/9befde80-8659-11e8-9b0d-95de449dc107" alt="IDEA中配置jdk"></p>
@@ -721,9 +709,6 @@
 <p>重新运行 main 方法启动项目，在浏览器中输入 <code>localhost:8080/start/springboot</code>，如果看到 <code>“Welcome to the world of Spring Boot!”</code>，那么恭喜你项目启动成功！Spring Boot 就是这么简单方便！端口号默认是8080，如果想要修改，可以在 application.yml 文件中使用 <code>server.port</code> 来人为指定端口，如8001端口：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8001</span><br></pre></td></tr></table></figure>
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>本节我们快速学习了如何在 IDEA 中导入 jdk，以及使用 IDEA 如何配置 maven 和编码，如何快速的创建和启动 Spring Boot 工程。IDEA 对 Spring Boot 的支持非常友好，建议大家使用 IDEA 进行 Spring Boot 的开发，从下一课开始，我们真正进入 Spring Boot 的学习中。<br>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第02课：Spring-Boot返回Json数据及数据封装"><a href="#第02课：Spring-Boot返回Json数据及数据封装" class="headerlink" title="第02课：Spring Boot返回Json数据及数据封装"></a>第02课：Spring Boot返回Json数据及数据封装</h1><p>在项目开发中，接口与接口之间，前后端之间数据的传输都使用 Json 格式，在 Spring Boot 中，接口返回 Json 格式的数据很简单，在 Controller 中使用<code>@RestController</code>注解即可返回 Json 格式的数据，<code>@RestController</code>也是 Spring Boot 新增的一个注解，我们点进去看一下该注解都包含了哪些东西。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RestController &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出， <code>@RestController</code> 注解包含了原来的 <code>@Controller</code> 和 <code>@ResponseBody</code> 注解，使用过 Spring 的朋友对 <code>@Controller</code> 注解已经非常了解了，这里不再赘述， <code>@ResponseBody</code> 注解是将返回的数据结构转换为 Json 格式。所以在默认情况下，使用了 <code>@RestController</code> 注解即可将返回的数据结构转换成 Json 格式，Spring Boot 中默认使用的 Json 解析技术框架是 jackson。我们点开 pom.xml 中的 <code>spring-boot-starter-web</code> 依赖，可以看到一个 <code>spring-boot-starter-json</code> 依赖：</p>
@@ -800,9 +785,6 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="string">"0"</span>,<span class="attr">"data"</span>:&#123;<span class="attr">"作者信息"</span>:&#123;<span class="attr">"id"</span>:<span class="number">1</span>,<span class="attr">"password"</span>:<span class="string">""</span>,<span class="attr">"username"</span>:<span class="string">"倪升武"</span>&#125;,<span class="attr">"CSDN地址"</span>:<span class="literal">null</span>,<span class="attr">"粉丝数量"</span>:<span class="number">4153</span>,<span class="attr">"博客地址"</span>:<span class="string">"http://blog.itcodai.com"</span>&#125;,<span class="attr">"msg"</span>:<span class="string">"操作成功！"</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>通过封装，我们不但将数据通过 json 传给前端或者其他接口，还带上了状态码和提示信息，这在实际项目场景中应用非常广泛。</p>
 <h2 id="4-总结-1"><a href="#4-总结-1" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>本节主要对 Spring Boot 中 json 数据的返回做了详细的分析，从 Spring Boot 默认的 jackson 框架到阿里巴巴的 fastJson 框架，分别对它们的配置做了相应的讲解。另外，结合实际项目情况，总结了实际项目中使用的 json 封装结构体，加入了状态码和提示信息，使得返回的 json 数据信息更加完整。<br>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第03课：Spring-Boot使用slf4j进行日志记录"><a href="#第03课：Spring-Boot使用slf4j进行日志记录" class="headerlink" title="第03课：Spring Boot使用slf4j进行日志记录"></a>第03课：Spring Boot使用slf4j进行日志记录</h1><p>在开发中，我们经常使用 <code>System.out.println()</code> 来打印一些信息，但是这样不好，因为大量的使用 <code>System.out</code> 会增加资源的消耗。我们实际项目中使用的是 slf4j 的 logback 来输出日志，效率挺高的，Spring Boot 提供了一套日志系统，logback 是最优的选择。</p>
 <h2 id="1-slf4j-介绍"><a href="#1-slf4j-介绍" class="headerlink" title="1. slf4j 介绍"></a>1. slf4j 介绍</h2><p>引用百度百科里的一段话：</p>
 <blockquote>
@@ -838,9 +820,6 @@
 </blockquote>
 <p>因为 INFO 级别比 DEBUG 级别高，所以 debug 这条没有打印出来，如果将 logback.xml 中的日志级别设置成 DEBUG，那么四条语句都会打印出来，这个大家自己去测试了。同时可以打开 D:\logs\course03\ 目录，里面有刚刚项目启动，以后后面生成的所有日志记录。在项目部署后，我们大部分都是通过查看日志文件来定位问题。</p>
 <h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>本节课主要对 slf4j 做了一个简单的介绍，并且对 Spring Boot 中如何使用 slf4j 输出日志做了详细的说明，着重分析了 <code>logback.xml</code> 文件中对日志相关信息的配置，包括日志的不同级别。最后针对这些配置，在代码中使用 Logger 打印出一些进行测试。在实际项目中，这些日志都是排查问题的过程中非常重要的资料。<br>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第04课：Spring-Boot中的项目属性配置"><a href="#第04课：Spring-Boot中的项目属性配置" class="headerlink" title="第04课：Spring Boot中的项目属性配置"></a>第04课：Spring Boot中的项目属性配置</h1><p>我们知道，在项目中，很多时候需要用到一些配置的信息，这些信息可能在测试环境和生产环境下会有不同的配置，后面根据实际业务情况有可能还会做修改，针对这种情况，我们不能将这些配置在代码中写死，最好就是写到配置文件中。比如可以把这些信息写到 <code>application.yml</code> 文件中。   </p>
 <h2 id="1-少量配置信息的情形"><a href="#1-少量配置信息的情形" class="headerlink" title="1. 少量配置信息的情形"></a>1. 少量配置信息的情形</h2><p>举个例子，在微服务架构中，最常见的就是某个服务需要调用其他服务来获取其提供的相关信息，那么在该服务的配置文件中需要配置被调用的服务地址，比如在当前服务里，我们需要调用订单微服务获取订单相关的信息，假设 订单服务的端口号是 8002，那我们可以做如下配置：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8001</span><br><span class="line"></span><br><span class="line"># 配置微服务的地址</span><br><span class="line">url:</span><br><span class="line">  # 订单微服务的地址</span><br><span class="line">  orderUrl: http://localhost:8002</span><br></pre></td></tr></table></figure>
@@ -972,9 +951,6 @@
 <p><img src="https://img-blog.csdnimg.cn/20200215044256579.png" alt="swagger接口展示"></p>
 <h2 id="5-总结-1"><a href="#5-总结-1" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>OK，本节课详细分析了 Swagger 的优点，以及 Spring Boot 如何集成 Swagger2，包括配置，相关注解的讲解，涉及到了实体类和接口类，以及如何使用。最后通过页面测试，体验了 Swagger 的强大之处，基本上是每个项目组中必备的工具之一，所以要掌握该工具的使用，也不难。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第07课：Spring-Boot集成Thymeleaf模板引擎"><a href="#第07课：Spring-Boot集成Thymeleaf模板引擎" class="headerlink" title="第07课：Spring Boot集成Thymeleaf模板引擎"></a>第07课：Spring Boot集成Thymeleaf模板引擎</h1><h2 id="1-Thymeleaf-介绍"><a href="#1-Thymeleaf-介绍" class="headerlink" title="1. Thymeleaf 介绍"></a>1. Thymeleaf 介绍</h2><blockquote>
 <p>Thymeleaf 是适用于 Web 和独立环境的现代服务器端 Java 模板引擎。<br>Thymeleaf 的主要目标是为您的开发工作流程带来优雅的自然模板 - 可以在浏览器中正确显示的HTML，也可以用作静态原型，从而在开发团队中实现更强大的协作。  </p>
 </blockquote>
@@ -1079,9 +1055,6 @@
 <p>Thymeleaf 还有很多其他用法，这里就不总结了，具体的可以参考Thymeleaf的<a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html" target="_blank" rel="noopener">官方文档（v3.0）</a>。主要要学会如何在 Spring Boot 中去使用 thymeleaf，遇到对应的标签或者方法，查阅官方文档即可。</p>
 <h2 id="5-总结-2"><a href="#5-总结-2" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>Thymeleaf 在 Spring Boot 中使用非常广泛，本节课主要分析了 thymeleaf 的优点，以及如何在 Spring Boot 中集成并使用 thymeleaf 模板，包括依赖、配置，相关数据的获取、以及一些注意事项等等。最后列举了一些 thymeleaf 中常用的标签，在实际项目中多使用，多查阅就能熟练掌握，thymeleaf 中的一些标签或者方法不用死记硬背，用到什么去查阅什么，关键是要会在 Spring Boot 中集成，用的多了就熟能生巧。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第08课：Spring-Boot中的全局异常处理"><a href="#第08课：Spring-Boot中的全局异常处理" class="headerlink" title="第08课：Spring Boot中的全局异常处理"></a>第08课：Spring Boot中的全局异常处理</h1><p>在项目开发过程中，不管是对底层数据库的操作过程，还是业务层的处理过程，还是控制层的处理过程，都不可避免会遇到各种可预知的、不可预知的异常需要处理。如果对每个过程都单独作异常处理，那系统的代码耦合度会变得很高，此外，开发工作量也会加大而且不好统一，这也增加了代码的维护成本。<br>针对这种实际情况，我们需要将所有类型的异常处理从各处理过程解耦出来，这样既保证了相关处理过程的功能单一，也实现了异常信息的统一处理和维护。同时，我们也不希望直接把异常抛给用户，应该对异常进行处理，对错误信息进行封装，然后返回一个友好的信息给用户。这节主要总结一下项目中如何使用 Spring Boot 如何拦截并处理全局的异常。</p>
 <h2 id="1-定义返回的统一-json-结构"><a href="#1-定义返回的统一-json-结构" class="headerlink" title="1. 定义返回的统一 json 结构"></a>1. 定义返回的统一 json 结构</h2><p>前端或者其他服务请求本服务的接口时，该接口需要返回对应的 json 数据，一般该服务只需要返回请求着需要的参数即可，但是在实际项目中，我们需要封装更多的信息，比如状态码 code、相关信息 msg 等等，这一方面是在项目中可以有个统一的返回结构，整个项目组都适用，另一方面是方便结合全局异常处理信息，因为异常处理信息中一般我们需要把状态码和异常内容反馈给调用方。<br>这个统一的 json 结构这可以参考<a href="https://gitbook.cn/gitchat/column/5b3c9f35a3442272491a176a" target="_blank" rel="noopener">第02课：Spring Boot 返回 JSON 数据及数据封装</a>中封装的统一 json 结构，本节内容我们简化一下，只保留状态码 code 和异常信息 msg即可。如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonResult</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 异常码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> String code;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 异常信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> String msg;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JsonResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = <span class="string">"200"</span>;</span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"操作成功"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JsonResult</span><span class="params">(String code, String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// get set</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1115,9 +1088,6 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="string">"500"</span>,<span class="attr">"msg"</span>:<span class="string">"系统发生异常，请联系管理员！"</span>&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4-总结-3"><a href="#4-总结-3" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>本节课程主要讲解了Spring Boot 的全局异常处理，包括异常信息的封装、异常信息的捕获和处理，以及在实际项目中，我们用到的自定义异常枚举类和业务异常的捕获与处理，在项目中运用的非常广泛，基本上每个项目中都需要做全局异常处理。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第09课：Spring-Boot中的切面AOP处理"><a href="#第09课：Spring-Boot中的切面AOP处理" class="headerlink" title="第09课：Spring Boot中的切面AOP处理"></a>第09课：Spring Boot中的切面AOP处理</h1><h2 id="1-什么是AOP"><a href="#1-什么是AOP" class="headerlink" title="1. 什么是AOP"></a>1. 什么是AOP</h2><p>AOP：Aspect Oriented Programming 的缩写，意为：面向切面编程。面向切面编程的目标就是分离关注点。什么是关注点呢？就是关注点，就是你要做的事情。假如你是一位公子哥，没啥人生目标，每天衣来伸手，饭来张口，整天只知道一件事：玩（这就是你的关注点，你只要做这一件事）！但是有个问题，你在玩之前，你还需要起床、穿衣服、穿鞋子、叠被子、做早饭等等等等，但是这些事情你不想关注，也不用关注，你只想想玩，那么怎么办呢？  </p>
 <p>对！这些事情通通交给下人去干。你有一个专门的仆人 A 帮你穿衣服，仆人 B 帮你穿鞋子，仆人 C 帮你叠好被子，仆人 D 帮你做饭，然后你就开始吃饭、去玩（这就是你一天的正事），你干完你的正事之后，回来，然后一系列仆人又开始帮你干这个干那个，然后一天就结束了！  </p>
 <p>这就是 AOP。AOP 的好处就是你只需要干你的正事，其它事情别人帮你干。也许有一天，你想裸奔，不想穿衣服，那么你把仆人 A 解雇就是了！也许有一天，出门之前你还想带点钱，那么你再雇一个仆人 E 专门帮你干取钱的活！这就是AOP。每个人各司其职，灵活组合，达到一种可配置的、可插拔的程序结构。</p>
@@ -1196,9 +1166,6 @@
 <p>这种 xml 和注解结合着使用的情况也很常见，而且也减少了大量的代码，因为 xml 文件可以使用自动生成工具去生成，也不需要人为手动敲，所以这种使用方式也很常见。</p>
 <h2 id="5-总结-3"><a href="#5-总结-3" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>本节课主要系统的讲解了 Spring Boot 集成 MyBatis 的过程，分为基于 xml 形式和基于注解的形式来讲解，通过实际配置手把手讲解了 Spring Boot 中 MyBatis 的使用方式，并针对注解方式，讲解了常见的问题已经解决方式，有很强的实战意义。在实际项目中，建议根据实际情况来确定使用哪种方式，一般 xml 和注解都在用。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第11课：Spring-Boot事务配置管理"><a href="#第11课：Spring-Boot事务配置管理" class="headerlink" title="第11课：Spring Boot事务配置管理"></a>第11课：Spring Boot事务配置管理</h1><h2 id="1-事务相关"><a href="#1-事务相关" class="headerlink" title="1. 事务相关"></a>1. 事务相关</h2><p>场景：我们在开发企业应用时，由于数据操作在顺序执行的过程中，线上可能有各种无法预知的问题，任何一步操作都有可能发生异常，异常则会导致后续的操作无法完成。此时由于业务逻辑并未正确的完成，所以在之前操作过数据库的动作并不可靠，需要在这种情况下进行数据的回滚。  </p>
 <p>事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。这很好理解，转账、购票等等，必须整个事件流程全部执行完才能人为该事件执行成功，不能转钱转到一半，系统死了，转账人钱没了，收款人钱还没到。</p>
 <p>事务管理是 Spring Boot 框架中最为常用的功能之一，我们在实际应用开发时，基本上在 service 层处理业务逻辑的时候都要加上事务，当然了，有时候可能由于场景需要，也不用加事务（比如我们就要往一个表里插数据，相互没有影响，插多少是多少，不能因为某个数据挂了，把之前插的全部回滚）。</p>
@@ -1248,9 +1215,6 @@
 <p>这个问题可以避免，第一，把事务去掉即可（不推荐）；第二，在调用该 service 的地方加锁，保证锁的范围比事务的范围大即可。</p>
 <h2 id="4-总结-4"><a href="#4-总结-4" class="headerlink" title="4. 总结"></a>4. 总结</h2><p>本章主要总结了 Spring Boot 中如何使用事务，只要使用 <code>@Transactional</code> 注解即可使用，非常简单方便。除此之外，重点总结了三个在实际项目中可能遇到的坑点，这非常有意义，因为事务这东西不出问题还好，出了问题比较难以排查，所以总结的这三点注意事项，希望能帮助到开发中的朋友。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <h1 id="第12课：Spring-Boot中使用监听器"><a href="#第12课：Spring-Boot中使用监听器" class="headerlink" title="第12课：Spring Boot中使用监听器"></a>第12课：Spring Boot中使用监听器</h1><h2 id="1-监听器介绍"><a href="#1-监听器介绍" class="headerlink" title="1. 监听器介绍"></a>1. 监听器介绍</h2><p>什么是 web 监听器？web 监听器是一种 Servlet 中特殊的类，它们能帮助开发者监听 web 中特定的事件，比如 ServletContext, HttpSession, ServletRequest 的创建和销毁；变量的创建、销毁和修改等。可以在某些动作前后增加处理，实现监控。</p>
 <h2 id="2-Spring-Boot中监听器的使用"><a href="#2-Spring-Boot中监听器的使用" class="headerlink" title="2. Spring Boot中监听器的使用"></a>2. Spring Boot中监听器的使用</h2><p>web 监听器的使用场景很多，比如监听 servlet 上下文用来初始化一些数据、监听 http session 用来获取当前在线的人数、监听客户端请求的 servlet request 对象来获取用户的访问信息等等。这一节中，我们主要通过这三个实际的使用场景来学习一下 Spring Boot 中监听器的使用。</p>
 <h3 id="2-1-监听Servlet上下文对象"><a href="#2-1-监听Servlet上下文对象" class="headerlink" title="2.1 监听Servlet上下文对象"></a>2.1 监听Servlet上下文对象</h3><p>监听 servlet 上下文对象可以用来初始化数据，用于缓存。什么意思呢？我举一个很常见的场景，比如用户在点击某个站点的首页时，一般都会展现出首页的一些信息，而这些信息基本上或者大部分时间都保持不变的，但是这些信息都是来自数据库。如果用户的每次点击，都要从数据库中去获取数据的话，用户量少还可以接受，如果用户量非常大的话，这对数据库也是一笔很大的开销。  </p>
@@ -1768,9 +1732,6 @@
 <p>其中，BusinessErrorException 是自定义的业务异常，继承一下 RuntimeException 即可，具体可以看我的源代码，文章中就不贴代码了。<br>在 UserController 中有个 testException 方法，用来测试全局异常的，打开 swagger 页面，调用一下该接口，可以看出返回用户提示信息：”系统发生异常，请联系管理员！“。当然了，实际情况中，需要根据不同的业务提示不同的信息。</p>
 <h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h2><p>本文主要手把手带领大家快速搭建一个项目中可以使用的 Spring Boot 空架构，主要从统一封装的数据结构、可调式的接口、json的处理、模板引擎的使用（代码中体现）、持久层的集成、拦截器和全局异常处理。一般包括这些东西的话，基本上一个 Spring Boot 项目环境就差不多了，然后就是根据具体情况来扩展了。</p>
 <p>课程源代码下载地址：<a href="https://gitee.com/eson15/springboot_study" target="_blank" rel="noopener">戳我下载</a></p>
-<blockquote>
-<p>欢迎关注我的为微信公众号：武哥聊编程</p>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       

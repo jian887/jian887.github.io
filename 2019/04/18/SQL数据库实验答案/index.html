@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script data-ad-client="ca-pub-8511538239750965" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta name="description" content="2．使用UPDATE命令修改基本表中的数据 （1）将编号为‘F70006’的商品的单价改为12.00元 update commodity set avgprice=12.00 where cid=’ F70006’ （2）将名称为‘家乐福’的客户的等级改为VIP客户。 update customer  set culevel=2  where cuname=’家乐福’ （3）将编号为‘A102’">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL数据库实验答案">
+<meta property="og:url" content="http://jian887.github.io/2019/04/18/SQL数据库实验答案/index.html">
+<meta property="og:site_name" content="两角纸博客">
+<meta property="og:description" content="2．使用UPDATE命令修改基本表中的数据 （1）将编号为‘F70006’的商品的单价改为12.00元 update commodity set avgprice=12.00 where cid=’ F70006’ （2）将名称为‘家乐福’的客户的等级改为VIP客户。 update customer  set culevel=2  where cuname=’家乐福’ （3）将编号为‘A102’">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-17T13:03:41.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL数据库实验答案">
+<meta name="twitter:description" content="2．使用UPDATE命令修改基本表中的数据 （1）将编号为‘F70006’的商品的单价改为12.00元 update commodity set avgprice=12.00 where cid=’ F70006’ （2）将名称为‘家乐福’的客户的等级改为VIP客户。 update customer  set culevel=2  where cuname=’家乐福’ （3）将编号为‘A102’">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://jian887.github.io/2019/04/18/SQL数据库实验答案/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SQL数据库实验答案 | 两角纸博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/jian887" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两角纸博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">我就是我，不一样的烟火</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jian887.github.io/2019/04/18/SQL数据库实验答案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两角纸">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两角纸博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL数据库实验答案
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-17 21:00:50 / 修改时间：13:03:41" itemprop="dateCreated datePublished" datetime="2019-04-17T21:00:50Z">2019-04-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/18/SQL数据库实验答案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/SQL数据库实验答案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/18/SQL数据库实验答案/" class="leancloud_visitors" data-flag-title="SQL数据库实验答案">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2．使用UPDATE命令修改基本表中的数据</p>
+<p>（1）将编号为‘F70006’的商品的单价改为12.00元</p>
+<p><strong>update commodity set avgprice=12.00 where cid=’ F70006’</strong></p>
+<p>（2）将名称为‘家乐福’的客户的等级改为VIP客户。</p>
+<p><strong>update customer</strong> </p>
+<p><strong>set culevel=2</strong> </p>
+<p><strong>where cuname=’</strong>家乐福’</p>
+<p>（3）将编号为‘A102’ 供应商供应商品的价格全部打八折</p>
+<p><strong>update supplying</strong></p>
+<p><strong>set price=price  0.8</strong></p>
+<p><strong>where sid=’A102’</strong></p>
+<p>3．使用DELETE命令删除基本表中的数据</p>
+<p>（1）删除采购明细表中的所有记录</p>
+<p><strong>delect from dbo.stockDetail</strong></p>
+<p>（2）从采购单表中删除2005年以前签订的采购单</p>
+<p><strong>delect from dbo.stock where year(cgdate)&lt;’2005’</strong></p>
+<p>4．使用SELECT…INTO语句向表中成批插入记录</p>
+<p>（1）将供应商‘A102’供应的商品和供应价格存到一个名字为‘A102_commodity’的表中</p>
+<p><strong>SELECT cgid,eid,cgmoney,cgdate</strong> </p>
+<p><strong>INTO A102_commodity</strong></p>
+<p><strong>from stock where sid=’A102’</strong></p>
+<p> （2）将所有的VIP客户信息存储到一个名字为‘VIP_Customer’的表中</p>
+<p><strong>select cuid,cuname,cutelephone</strong></p>
+<p><strong>into VIP_Customer</strong></p>
+<p><strong>from customer</strong></p>
+<p><strong>where culevel=2</strong></p>
+<p>5．使用INSERT…SELECT语句向表中成批插入记录</p>
+<p>（1）新建一个名称为‘achievement’的表，其属性包括销售单ID，销售单总金额，销售日期</p>
+<p><strong>CREATE TABLE achievement(</strong></p>
+<p> <strong>SAid char(12) PRIMARY KEY, –**</strong>销售单<strong>**ID</strong></p>
+<p> <strong>SAmoney float, –**</strong>销售金额**</p>
+<p> <strong>SAdate DateTIme, –**</strong>签订日期**</p>
+<p><strong>)</strong></p>
+<p>（2）将编号为‘S0002’的销售员签订的销售单信息存储到achievement表中。</p>
+<p><strong>insert</strong> </p>
+<p><strong>into achievement(SAid,SAmoney,SAdate)</strong></p>
+<p><strong>select SAid,SAmoney,SAdate from sale where eid=’S0002’</strong></p>
+<p><strong>三、自我测试</strong></p>
+<p>1．从采购明细表中删除所有从供应商‘A153’处采购的编号为‘F70006’商品的明细信息</p>
+<p><strong>DELETE from stockdetail where cgid in</strong></p>
+<p><strong>(select cgid from stock where sid=’A153’) and cid=’F70006’</strong></p>
+<p>2．从销售明细表中删除2005年以前签订的销售单的销售明细记录</p>
+<p><strong>delete from saledetail where said in</strong></p>
+<p><strong>(select said from sale where year(sadate)&lt;’2005’)</strong></p>
+<p>实验三 单表查询</p>
+<p><strong>一、实验目的与要求</strong></p>
+<p>1．掌握基本的SELECT…FROM语句的用法</p>
+<p>2．能应用SELECT语句及其子句解决常见的查询问题</p>
+<p>3．掌握模糊查询的使用方法</p>
+<p>4．能应用聚集函数和GROUP BY子句进行统计查询</p>
+<p><strong>二、实验内容</strong></p>
+<p>1．  查找所有商品的名称和库存信息</p>
+<p><strong>select cname,cstorage from commodity</strong></p>
+<p>2．  查找‘北京’地区的供应商</p>
+<p><strong>select * from supplier where sarea = ‘**</strong>北京’**</p>
+<p>3．  查找所有销售人员的基本信息</p>
+<p><strong>Select * from employee where etype=3</strong></p>
+<p>4．  查找签订日期在‘2005-5-1’和‘2006-3-1’之间签订的采购单的基本信息</p>
+<p><strong>select * from stock where cgdate&gt;’2005-5-1’ and cgdate&lt;’2006-3-1’</strong></p>
+<p>5．  查找2006年签订的所有销售单，要求显示销售单ID、客户ID和销售单总金额</p>
+<p><strong>select said,cuid,samoney from sale where year(sadate)= ‘2006’</strong></p>
+<p>6．  查找每个采购员所签订的采购单的数目，显示结果按采购单数目降序排序</p>
+<p><strong>select eid,count(cgid) myc from stock group by eid order by myc desc</strong></p>
+<p>7．  查询每个销售员签订的销售单总金额</p>
+<p><strong>select eid,sum(samoney) from sale group by eid</strong></p>
+<p>8．  查找2005年与每个客户签订的销售单的总金额，只显示总金额大于500000的客户ID和总金额</p>
+<p><strong>select cuid,samoney from sale where samoney&gt;500000 and year(sadate)=2005</strong></p>
+<p>9．  查询2005年签订的金额最大的一笔销售单，要求显示销售员ID、客户ID和销售金额</p>
+<p><strong>select top 1 eid,cuid,samoney from sale where year(sadate)=2005</strong></p>
+<p>10．            查询2005年与编号为‘A002’的供应商签订的所有采购单的总金额</p>
+<p><strong>select sum(cgmoney) from stock where year(cgdate)=2005 and sid=’ A002’</strong></p>
+<p>11．            查询名称中含有‘机’字的所有商品的ID、名称和库存量</p>
+<p><strong>select cid,cname,cstorage from commodity where cname like ‘%**</strong>机%’**</p>
+<p>12．            查找第二个汉字是‘翔’的商品名称和单价。</p>
+<p><strong>select cname,avgprice from commodity where cname like ‘_**</strong>翔%’**</p>
+<p><strong>三、自我测试</strong></p>
+<p>1．查询2005年签订的销售合同总额排名前5名的销售员的ID和合同总额，要求结果按照合同总额降序排列</p>
+<p><strong>select top 5 eid,samoney from sale order by samoney desc</strong></p>
+<p>2．查询至少供应了3种商品的供应商的ID</p>
+<p><strong>select sid from supplying group by sid having count(*)&gt;=3</strong> </p>
+<p>3．查询在2006年至少已经与2名销售员签订了合同的客户ID</p>
+<p><strong>select cuid,count(distinct eid)</strong> </p>
+<p><strong>from sale where year(sadate)=2006 group by cuid having count(distinct eid)&gt;=2</strong></p>
+<p>实验四 表连接查询</p>
+<p><strong>一、实验目的与要求</strong></p>
+<p>1．掌握表连接查询的使用方法</p>
+<p>2．掌握子查询的使用方法</p>
+<p>3．能使用内连接、左外连接、右外连接以及交叉连接解决相关问题</p>
+<p>4．熟悉系统函数的使用</p>
+<p><strong>二、实验内容</strong></p>
+<p>1．查找每一个供应商供应的商品的名称，要求显示供应商名称和商品名称。</p>
+<p><strong>select sname,cname</strong> </p>
+<p><strong>from supplying sg,commodity c,supplier sr</strong></p>
+<p><strong>where sg.cid=c.cid and sr.sid=sg.sid</strong></p>
+<p>2．使用连接查询查找与姓名为‘李云’的采购员签订采购单的供应商的名称。</p>
+<p><strong>select distinct sname</strong> </p>
+<p><strong>from stock s,supplier sr,employee e</strong> </p>
+<p><strong>where s.sid=sr.sid and e.eid=s.eid and ename=’**</strong>李云’**</p>
+<p>3．使用关键字IN完成查询，要求查找与姓名为‘李云’的采购员签订采购单的供应商的名称。</p>
+<p><strong>select sname from supplier where sid in(</strong></p>
+<p>   <strong>select sid from stock sk,employee e where sk.eid=e.eid and e.ename=’**</strong>李云’)**</p>
+<p>4．使用左外连接完成如下查询：要求查找所有采购员签订的采购合同的详细信息。</p>
+<p><strong>select * from dbo.Employee e left join dbo.stock s on e.eid=s.eid</strong></p>
+<p>5．使用左外连接完成如下查询：查找所有客户购买的商品详细信息，要求显示客户名称，</p>
+<p>商品名称，销售数量，商品单价，没有购买商品的客户也要显示。</p>
+<p><strong>select cuname,cname,sdnumber,sdprice from dbo.customer cu</strong> </p>
+<p>   <strong>left join dbo.sale s on cu.cuid=s.cuid</strong> </p>
+<p>​     <strong>left join dbo.saleDetail sd on sd.said=s.said</strong></p>
+<p>​        <strong>left join commodity c on sd.cid=c.cid</strong></p>
+<p>6．请使用内连接完成如下查询：查找每一个供应商供应的商品的种类，要求显示供应商名称，供应的商品的种类。</p>
+<p><strong>select sname,count(cname) from dbo.supplier s</strong></p>
+<p>   <strong>inner join dbo.supplying sp on s.sid=sp.sid</strong></p>
+<p>   <strong>inner join dbo.commodity c on sp.cid=c.cid</strong></p>
+<p>​     <strong>group by sname</strong></p>
+<p>7．查找购买了编号为‘A001’的供应商供应的商品的客户名称</p>
+<p><strong>select cuname from customer cu,sale s,saledetail sd,supplying sp,supplier sr</strong> </p>
+<p><strong>Where cu.cuid=s.cuid and s.said=sd.said and sd.cid=sp.cid</strong> </p>
+<p><strong>and sr.sid=sp.sid and sp.sid=’ A001’</strong></p>
+<p>8．查找销售员‘王良’在2005年签订的销售合同的详细信息。</p>
+<p><strong>select sd.*,s.* from saledetail sd,sale s,employee e</strong> </p>
+<p><strong>where sd.said=s.said and e.eid=s.eid</strong></p>
+<p><strong>三、自我测试</strong></p>
+<p>1．使用右外连接完成如下查询：要求查找所有采购员签订的采购合同的详细信息，没有签订采购单的采购员也要显示</p>
+<p><strong>select st.*,std.*,e.* from stockdetail std right join stock st on std.cgid=st.cgid</strong></p>
+<p> <strong>right join employee e on e.eid= st.eid</strong></p>
+<p>2．查找购买了名称为‘联想集团’的供应商供应的商品的客户名称</p>
+<p><strong>select distinct cuname</strong> </p>
+<p><strong>from customer cu,sale s,saledetail sd,commodity c,supplying sp,supplier sr</strong></p>
+<p><strong>Where cu.cuid=s.cuid and s.said=sd.said and sd.cid=c.cid and sp.cid=c.cid and sp.sid=sr.sid and sr.sname=’**</strong>联想集团’**</p>
+<p>实验五 表综合查询使用</p>
+<p><strong>一、实验目的与要求</strong></p>
+<p>1．能熟练应用SELECT语句及其相关字句</p>
+<p>2．能将SELECT与系统函数、IF ELSE、WHILE等语句进行综合应用并解决相关问题</p>
+<p><strong>二、实验内容</strong></p>
+<p>1．查询所有供应‘鲜橙多’的供应商的最低报价。</p>
+<p><strong>select min(price) from supplying</strong></p>
+<p><strong>where cid in(select cid from commodity where cname=’**</strong>鲜橙多’)**</p>
+<p>2．查找销售员‘王良’在2005年签订的所有销售合同中每一类商品的总金额。</p>
+<p><strong>select cid,sum(sdprice*sdnumber)</strong> </p>
+<p><strong>from saledetail sd,sale sa</strong></p>
+<p><strong>where sd.said=sa.said and year(sadate)=2005</strong></p>
+<p><strong>and eid in(select eid from employee where ename=’**</strong>王良<strong>**’)</strong></p>
+<p><strong>group by cid</strong></p>
+<p>3．汇总由姓名为‘刘明’的采购员在2005年采购的‘数码相机’的总金额。</p>
+<p><strong>select sum(sdnumber*sdprice)</strong></p>
+<p><strong>from stockdetail sd,stock s</strong></p>
+<p><strong>where sd.cgid=s.cgid and eid =(select eid from employee where ename=’**</strong>刘明’)** </p>
+<p>   <strong>and cid=(select cid from commodity where cname=’**</strong>数码相机’)**</p>
+<p>1．  汇总由姓名为‘刘明’的采购员在2005年采购的各类商品的数量。</p>
+<p><strong>select cid,sum(sdnumber)</strong></p>
+<p><strong>from dbo.stockDetail</strong></p>
+<p><strong>where cgid in(select cgid from stock where</strong> <strong>year(cgdate)=2005</strong> </p>
+<p><strong>and</strong> <strong>eid=(select eid from employee where ename=’**</strong>刘明’)**</p>
+<p><strong>)</strong></p>
+<p><strong>group by cid</strong></p>
+<p>2．  查找没有供应任何一类商品的供应商的名字。</p>
+<p><strong>select sname from supplier where sid not in(select sid from supplying)</strong></p>
+<p>3．  查找在2006年各个客户购买商品的总金额，要求结果按照购买商品的总金额降序排序</p>
+<p><strong>select cuid,sum(samoney) from sale where year(sadate)=2006 group by cuid</strong></p>
+<p>4．  查找编号为‘A002’的供应商没有供应的商品的名称</p>
+<p><strong>select cname from commodity</strong></p>
+<p><strong>where cid not in(select cid from supplying where sid=’A002’)</strong></p>
+<p>5．  查询由‘三高计算机公司’和‘联想集团’供应商的所有商品的商品名称。</p>
+<p><strong>select cname from commodity where cid in(</strong></p>
+<p><strong>select cid from supplying where sid in(</strong></p>
+<p>​     <strong>select sid from supplier where sname in(‘**</strong>三高计算机公司’,’联想集团’)))**</p>
+<p><strong>三、自我测试</strong></p>
+<p>\1. 请使用左连接完成以下查询：查找每一个销售人员销售的商品的详细信息，要求显示销售人员姓名、销售单ID、客户姓名、商品名称、销售数量、和销售单价。</p>
+<p><strong>select ename,s.said,cuname,sdnumber,sdprice from employee e</strong></p>
+<p>   <strong>left join sale s on s.eid = e.eid</strong></p>
+<p>​     <strong>left join saledetail sd on s.said=sd.said</strong></p>
+<p>​        <strong>left join customer cu on s.cuid=cu.cuid</strong> </p>
+<p>​           <strong>left join commodity c on sd.cid=c.cid</strong></p>
+<p>​             <strong>where e.etype=3</strong></p>
+<p>\2. 查找每个采购员和每个供应商签订的合同的总金额，要求显示采购员姓名、供应商名称、和签订合同的总金额。（可以假设采购员姓名唯一，供应商名称唯一）</p>
+<p><strong>select ename,sname,sum(cgmoney) from stock st,employee e,supplier sr</strong> </p>
+<p><strong>Where e.eid=st.eid and sr.sid=st.sid</strong></p>
+<p><strong>Group by ename,sname</strong></p>
+<p>实验六 视图与索引</p>
+<p><strong>一、实验目的与要求</strong></p>
+<p>1．熟悉视图的概念，以及视图与表的联系和区别</p>
+<p>2．掌握视图的定义方法</p>
+<p>3．掌握对视图的查询操作</p>
+<p>1．  掌握对视图的更新操作，并了解视图的更新条件</p>
+<p>2．  掌握同时对视图和表进行操作的方法</p>
+<p>3．  熟悉索引的概念与作用</p>
+<p>4．  掌握索引的建立与删除操作</p>
+<p><strong>二、实验内容</strong></p>
+<p>1．定义一个名称为‘supplying_view’的视图，要求其对应的数据是由‘天天食品公司’供应的商品ID、商品单价。</p>
+<p><strong>create view supplying_view</strong> <strong>as</strong></p>
+<p><strong>select cid,price</strong></p>
+<p><strong>from supplying</strong></p>
+<p><strong>where sid = (select sid from supplier where sname=’**</strong>天天食品公司’)**</p>
+<p>2．查询采购员‘李云’和供应商‘天天食品公司’签订的所有采购单的采购单ID、采购金额、签订日期，并将其建立为一个名称为‘stock_view_1’的视图。</p>
+<p><strong>create view stock_view_1 as</strong></p>
+<p><strong>select st.cgid,cgmoney,cgdate from stock st</strong></p>
+<p><strong>where eid =(select eid from employee where ename=’**</strong>李云’)**</p>
+<p> <strong>and sid =(select sid from supplier where sname=’**</strong>天天食品公司’)**</p>
+<p>3．建立一个名称为‘commodity_100’的视图，其对应所有的库存量小于100的商品的信息。</p>
+<p><strong>create view commodity_100 as</strong></p>
+<p><strong>select * from commodity where cstorage&lt;100</strong></p>
+<p>4．使用视图supplying_view和相关基本表查找由供应商‘天天食品公司’供应的商品ID、商品名称和商品单价。</p>
+<p><strong>select sv.*,cname from supplying_view sv,commodity c</strong> <strong>where sv.cid=c.cid</strong></p>
+<p>5．使用视图‘stock_view_1’和相关基本表查询‘李云’和供应商‘天天食品公司’签订的所有采购单的采购明细信息，要求显示采购单ID、商品ID、商品名称、采购数量、和商品单价。</p>
+<p><strong>select sv1.cgid,c.cid,cname,sdnumber,avgprice</strong> </p>
+<p><strong>from stock_view_1 sv1,commodity c,stockdetail std</strong></p>
+<p><strong>where sv1.cgid=std.cgid and c.cid=std.cid</strong></p>
+<p>6．为supermarket数据库中的任意一个表建立索引（按升序建唯一索引号）。</p>
+<p><strong>create index id</strong></p>
+<p><strong>on commodity(cid asc)</strong></p>
+<p>7．使用DROP INDEX语句删除新建的索引</p>
+<p><strong>drop index id</strong></p>
+<p><strong>三、自我测试</strong></p>
+<p>1．建立一个视图，其对应的数据是在2006年签订的销售单总额超过100万的销售员的I D和姓名。</p>
+<p><strong>Create view myview as</strong> </p>
+<p><strong>Select</strong> <strong>s.**</strong>eid,ename from sale s,employee e** </p>
+<p><strong>where year(SAdate)=2006 and s.eid=e.eid</strong></p>
+<p>2．使用上述建立的视图和NOT IN关键字查询在2006年签订的销售单总额没有超过100万的销售员的I D和姓名。</p>
+<p><strong>Select s.eid,ename from sale s,employee e</strong></p>
+<p>where s.eid=e.eid and year(SAdate)=2006 and s.eid not in(select eid from myview)</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Boss 扫一下呗</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="两角纸 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="两角纸 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/18/原版编译原理实验指导书/" rel="next" title="原版编译原理实验指导书">
+                <i class="fa fa-chevron-left"></i> 原版编译原理实验指导书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/35个短信免费接收平台分享，你值得拥有！免费接码平台！/" rel="prev" title="35个短信免费接收平台分享，你值得拥有！免费接码平台！">
+                35个短信免费接收平台分享，你值得拥有！免费接码平台！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="两角纸">
+            
+              <p class="site-author-name" itemprop="name">两角纸</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jian887" title="GitHub &rarr; https://github.com/jian887" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/5231379004?is_hot=1" title="Weibo &rarr; https://weibo.com/u/5231379004?is_hot=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+	  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8511538239750965",
+    enable_page_level_ads: true
+  });
+</script>
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by 两角纸</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'WbVpdETG9NrafyGbIe8DQy6t-gzGzoHsz',
+    appKey: 'fTLtfXeEprCNM3Jud6v9ph32',
+    placeholder: '快来评论吧',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

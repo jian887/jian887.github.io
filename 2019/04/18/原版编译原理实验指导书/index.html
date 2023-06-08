@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script data-ad-client="ca-pub-8511538239750965" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta name="description" content="编 译 原 理 实 验 指 导 书 前 言 编译原理是计算机科学与技术、软件工程等专业的主干课和必修课，由于这门课程相对抽象且内容较复杂，一直是比较难学的一门课程。在编译原理的学习过程中，实验非常重要，只有通过上机实验，才能使学生对比较抽象的课程内容产生一个具体的感性认识。 本书实验环境主要为C环境及一个词法分析器自动生成工具FLEX和一个语法分析器自动生成工具BISON。书中给出的参考源程序也是">
+<meta name="keywords" content="编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原版编译原理实验指导书">
+<meta property="og:url" content="http://jian887.github.io/2019/04/18/原版编译原理实验指导书/index.html">
+<meta property="og:site_name" content="两角纸博客">
+<meta property="og:description" content="编 译 原 理 实 验 指 导 书 前 言 编译原理是计算机科学与技术、软件工程等专业的主干课和必修课，由于这门课程相对抽象且内容较复杂，一直是比较难学的一门课程。在编译原理的学习过程中，实验非常重要，只有通过上机实验，才能使学生对比较抽象的课程内容产生一个具体的感性认识。 本书实验环境主要为C环境及一个词法分析器自动生成工具FLEX和一个语法分析器自动生成工具BISON。书中给出的参考源程序也是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499892/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image003_qxbxri.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499892/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image005_x8jwei.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image007_scoqqn.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499893/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image009_zfvnob.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image011_ylsxcn.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image013_kbcvd0.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image015_vo3nqw.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image016_u9eduy.gif">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image017_phl7tq.gif">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499899/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image019_zutc8p.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499900/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image021_junok9.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499901/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image023_zagxxx.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555505639/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/j_iowmrp.png">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499903/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image027_mewgq3.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499903/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image029_hzwcel.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499904/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image031_nv8znj.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499907/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image033_jnhptz.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499906/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image035_g1srmw.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499907/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image037_kvzjcc.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499905/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image039_blafu3.gif">
+<meta property="og:updated_time" content="2019-04-17T12:54:41.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原版编译原理实验指导书">
+<meta name="twitter:description" content="编 译 原 理 实 验 指 导 书 前 言 编译原理是计算机科学与技术、软件工程等专业的主干课和必修课，由于这门课程相对抽象且内容较复杂，一直是比较难学的一门课程。在编译原理的学习过程中，实验非常重要，只有通过上机实验，才能使学生对比较抽象的课程内容产生一个具体的感性认识。 本书实验环境主要为C环境及一个词法分析器自动生成工具FLEX和一个语法分析器自动生成工具BISON。书中给出的参考源程序也是">
+<meta name="twitter:image" content="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://jian887.github.io/2019/04/18/原版编译原理实验指导书/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>原版编译原理实验指导书 | 两角纸博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/jian887" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两角纸博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">我就是我，不一样的烟火</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jian887.github.io/2019/04/18/原版编译原理实验指导书/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两角纸">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两角纸博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原版编译原理实验指导书
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-17 18:29:15 / 修改时间：12:54:41" itemprop="dateCreated datePublished" datetime="2019-04-17T18:29:15Z">2019-04-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编译原理实验/" itemprop="url" rel="index"><span itemprop="name">编译原理实验</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/18/原版编译原理实验指导书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/原版编译原理实验指导书/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/18/原版编译原理实验指导书/" class="leancloud_visitors" data-flag-title="原版编译原理实验指导书">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>编 译 原 理</strong></p>
+<p><strong>实</strong></p>
+<p><strong>验</strong></p>
+<p><strong>指</strong></p>
+<p><strong>导</strong></p>
+<p><strong>书</strong></p>
+<p><strong>前</strong> <strong>言</strong></p>
+<p>编译原理是计算机科学与技术、软件工程等专业的主干课和必修课，由于这门课程相对抽象且内容较复杂，一直是比较难学的一门课程。在编译原理的学习过程中，实验非常重要，只有通过上机实验，才能使学生对比较抽象的课程内容产生一个具体的感性认识。</p>
+<p>本书实验环境主要为C环境及一个词法分析器自动生成工具FLEX和一个语法分析器自动生成工具BISON。书中给出的参考源程序也是C源程序，但由于实验者熟悉精通的语言工具不尽相同，因而强求采用统一的编程语言编程是不现实的。实验者在掌握了编译程序各个阶段的功能和原理之后，不难借助使用其他自己熟悉的语言实现相关功能。</p>
+<p>实验者在实验过程中应该侧重写出自己在算法分析、设计思路、实现功能或程序代码等方面的特色，写出设计和实现过程中遭遇到的难点和解决办法，可以不拘泥于实验指导给出的参考性设计思路，尽可能在深度和广度上加以拓展。只有这种各具特色的实验报告，才将更有利于体现实验者在创新思维和动手能力上的差异。</p>
+<p>通过这些实验，能使学生对这些部份的工作机理有一个详细的了解，达到“知其然，且知其所以然”的目的。并可在C环境下对自动生成工具生成的词法、语法分析器进行编译调试。</p>
+<p>由于手工生成词法和语法分析器的工作量太大，在实际中常用自动生成工具来完成之。这些工具中最著名的当属贝尔实验室的词法分析器生成工具LEX和语法分析器生成工具YACC。它们现已成为UNIX的标准应用程序同UNIX一起发行。与此同时GNU推出与LEX完全兼容的FLEX，与YACC完全兼容的BISON。这两个程序都在Internet上以源代码的形式免费发行，所以很容易在其它操作系统下重新编译安装。我们实验采用的就是for dos的FLEX和BISON。本书有关的编译工具及其源程序例子，可到BISON的网站上下载。关于FLEX和BISON的用法简介，参见附录，如需更详细的介绍，请参阅编译工具中帮助文件。</p>
+<p><strong>目  录</strong></p>
+<p><a href="#_Toc478912420"><strong>实验一　词法分析器设计实验</strong>… 1</a></p>
+<p><a href="#_Toc478912422"><strong>实验二　用递归下降法实现语法分析实验</strong>… 5</a></p>
+<p><a href="#_Toc478912423"><strong>实验三　熟悉**</strong>FLEX<strong>**使用方法</strong>… 9</a></p>
+<p><a href="#_Toc478912424"><strong>附录一</strong>   <strong>词法分析器生成工具**</strong>FLEX<strong>**简介</strong>… 13</a></p>
+<p><a href="#_Toc478912425"><strong>附录二</strong>   <strong>语法分析器生成工具**</strong>YACC<strong>**简介</strong>… 20</a></p>
+<p><a href="#_Toc478912426"><strong>参考文献</strong>… 26</a></p>
+<p><strong>实验一　词法分析器**</strong>的设计**</p>
+<p><strong>【实验目的】</strong></p>
+<p>1．  掌握生成词法分析器的方法，加深对词法分析原理的理解。</p>
+<p>2．  掌握设计、编制并调试词法分析程序的思想和方法。</p>
+<p>3．  本实验是高级语言程序设计、数据结构和编译原理中词法分析原理等知识的综合。</p>
+<p><strong>【实验性质】</strong></p>
+<p>综合性实验（学时数：2H）</p>
+<p><strong>【实验内容及要求】</strong></p>
+<p>1． 设计并实现一个四则运算的计算器,通过命令行方式启动,可以通过键盘输入整个算式,然后直接显示结果。将换行作为分隔符，把输入分隔为一个个算式。</p>
+<p>2． 使用C语言设计、编写、调试一个词法分析子程序。</p>
+<p>3． 实验前请仔细阅读实验预习提示，已经附有完整的源代码,请在实验报告中画出该分析器所实现的状态转换图。</p>
+<p>4． 提交的实验报告中要有实验名称、实验目的、实验内容、实验程序清单、调试过程和运行结果，程序的主要部分做出功能说明，并有实验收获体会或改进意见等内容。</p>
+<p>5． 进阶实验:扩展原有计算器,使其可以支持括号和负数运算。</p>
+<p>6． 本实验建议学时数为2学时</p>
+<p><strong>【实验预习提示】</strong></p>
+<p>1.词法分析器的功能和输出格式</p>
+<p>词法分析器的功能是输入以字符串表示的源程序，输出单词符号或单词符号序列。词法分析器的单词符号常常表示成以下的二元组(单词的种别码，单词符号的属性值)。本实验是用于计算器的词法分析器，只需处理运算符和数值。</p>
+<p>2.“超前搜索”方法</p>
+<p>词法分析时，常常会用到超前搜索方法。如当前待分析字符串为“a&gt;+”,当前字符为’&gt;’，此时，分析器倒底是将其分析为大于关系运算符还是大于等于关系运算符呢？显然，只有知道下一个字符是什么才能下结论。于是分析器读入下一个字符’+’，这时可知应将’&gt;’解释为大于运算符。但此时，超前读了一个字符’+’，所以要回退一个字符，词法分析器才能正常运行。</p>
+<p>3.词法分析程序主程序的算法思想</p>
+<p>算法的基本思想是根据扫描到单词符号的第一个字符的种类，拼写出相应的单词符号，其实现的基本任务是从字符串表示的源程序中识别出相应的具有独立意义的单词符号。主程序示意图如图1.1所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://res.cloudinary.com/jian887/image/upload/v1555499890/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image001_dimfpv.gif" alt></td>
+</tr>
+</tbody>
+</table>
+<p>​                           </p>
+<p>​                                 </p>
+<p>图1.1 词法分析主程序示意图</p>
+<p>4.补充知识:</p>
+<p>(1)避免重复包含。在头文件token.h中，有这样的代码段：</p>
+<p> #ifndef TOKEN_H_INCLUDED</p>
+<p> #define TOKEN_H_INCLUDED</p>
+<p>​         …</p>
+<p> #endif</p>
+<p>这是为了防止多次用#include包含引起多重定义错误而采用的技巧。头文件用#include包含自己所依赖的其他所有头文件，可以让代码中只需书写一次include,且当依赖关系发生改变时较容易修改。但如果多个头文件这样书写，会报类型或宏的重复定义错误，一次可以采用这个技巧，根据开头的#ifndef语句，避免产生多重定义的错误。</p>
+<p>(2)在执行语句sscanf(token-&gt;str,”%lf”,&amp;token-&gt;value);时，会出现null pointer assignment错误，这是因为没有给指针初始化。</p>
+<p>5.参考源程序</p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499892/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image003_qxbxri.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499892/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image005_x8jwei.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image007_scoqqn.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499893/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image009_zfvnob.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image011_ylsxcn.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image013_kbcvd0.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image015_vo3nqw.jpg" alt="img"></p>
+<p>​    </p>
+<p><strong>实验二　用递归下降法实现语法分析</strong></p>
+<p><strong>【实验目的】</strong></p>
+<p>1.掌握用递归下降分析法进行语法分析的方法。加深对自顶向下语法分析原理的理解。</p>
+<p>2.掌握设计、编制并调试自顶向下语法分析程序的思想和方法。</p>
+<p>3.本实验是高级语言程序设计、数据结构和编译原理中词法分析、自顶向下语法分析原理等知</p>
+<p>识的综合。由于语法分析是在词法分析的基础上进行的，且词法分析器输出的结果即单词符号</p>
+<p>或单词符号序列是语法分析的输入。</p>
+<p><strong>【实验性质】</strong></p>
+<p>综合性实验（学时数：2H）</p>
+<p><strong>【实验要求】</strong></p>
+<p>\1.  调用实验一的get_token函数进行词法分析，使用递归下降法作语法分析器，实现计算器的功能。</p>
+<p>\2.  实验前请仔细阅读实验预习提示，参考所附完整的源代码,请在实验报告中写出该分析器所使用的语法规则。</p>
+<p>\3. 本实验建议学时2学时。</p>
+<p><strong>【实验预习提示】</strong></p>
+<p>1、   语法分析程序的算法思想</p>
+<p>（1）   主程序示意图如图4.1所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><img src="https://res.cloudinary.com/jian887/image/upload/v1555499896/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image016_u9eduy.gif" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>图4.1 递归下降法语法分析主程序示意图</p>
+<p>（2）   递归下降分析程序示意图如图4.2所示。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><img src="https://res.cloudinary.com/jian887/image/upload/v1555499897/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image017_phl7tq.gif" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>​                             图4.2 递归下降分析程序示意图</p>
+<p>2.参考源程序parser.c：</p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499899/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image019_zutc8p.jpg" alt="img"><img src="https://res.cloudinary.com/jian887/image/upload/v1555499900/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image021_junok9.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499901/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image023_zagxxx.jpg" alt="img"><img src="https://res.cloudinary.com/jian887/image/upload/v1555505639/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/j_iowmrp.png" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499903/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image027_mewgq3.jpg" alt="img"></p>
+<p><strong>实验三　熟悉FLEX使用方法</strong></p>
+<p><strong>【实验目的】</strong></p>
+<p>1． 掌握FLEX基本使用方法</p>
+<p>2． 掌握如何将通过FLEX生成的C语言模块加入到自已的程序中</p>
+<p><strong>【实验要求】</strong></p>
+<p>1．编制FLEX源程序,分别统计文本文件a.txt中出现的标识符和整数个数,并显示之。标识符定义为字母开头，后跟若干个字母，数字或下划线。整数可以带+或-号，也可不带，且不以0开头。非单词和非整数则忽略不记，将之滤掉不显示。</p>
+<p>2．编制一FLEX源程序,分别求出文件hh.c中字母,数字,回车符的个数。</p>
+<p>3． 思考：若main函数不在FLEX中实现，应该如何实现？</p>
+<p>4． 本次实验建议学时2学时。</p>
+<p><strong>【实验预习提示】</strong></p>
+<p>参见附录一。在看懂的基础上将之调试通过。</p>
+<p><strong>实验四　用FLEX和BISON自动**</strong>实现计算器**</p>
+<p><strong>【实验目的】</strong></p>
+<p>熟练掌握FLEX和BISON，并通过其生成词法和语法分析器，实现实验一和实验二的加算器功能</p>
+<p><strong>【实验要求】</strong></p>
+<p>1． 通过FLEX生成一词法分析器函数，其功能同实验一中词法分析器函数类似。</p>
+<p>2． 通过BISON生成一语法分析器。参造附录，读懂所附源程序。</p>
+<p>3． 生成一工程文件，调用1和2中生成的函数，实现计算器的功能</p>
+<p>4． 本实验建议学时2学时。</p>
+<p><strong>【实验预习提示】</strong></p>
+<p>1． 由于FLEX生成的C程序模块lex.yy.c过于复杂，基本不可读，所以不要直接修改它，可将它看成一个“黑箱”，即不需要清楚知道其内部结构，只需要知道其接口即可。可通过修改FLEX源程序间接修改之。关于lex.yy.c中常用变量和函数，在附录中有详细说明。</p>
+<p>2． 编制语法分析器mycalc.y，通过BISON生成y.tab.c和y.tab.h。命令为：</p>
+<p>bison –yacc –dv mycalc.y</p>
+<p>使用BISON代替了YACC,默认生成的文件是mycalc.c和mycalc.h，所以在添加了—yacc参数，可以生成与YACC同名的文件</p>
+<p>3． 编制词法分析器mycalc.l，通过FLEX生成lex.yy.c。命令为：</p>
+<p>flex mycalc.l</p>
+<p>4． 生成一工程文件，不妨取名为test.prj，将文件lex.yy.c、y.tab.c和y.tab.h，加入之。源程序参考如下：</p>
+<p>(1) mycalc.l</p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499903/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image029_hzwcel.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499904/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image031_nv8znj.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499907/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image033_jnhptz.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499906/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image035_g1srmw.jpg" alt="img"></p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499907/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image037_kvzjcc.jpg" alt="img"></p>
+<p><strong>附录一   词法分析器生成工具FLEX简介</strong></p>
+<p>1． FLEX简介</p>
+<p>单词的描述称为模式(Lexical Pattern)，模式一般用正规表达式进行精确描述。FLEX通过读取一个有规定格式的文本文件，输出一个如下所示的C语言源程序。</p>
+<p><img src="https://res.cloudinary.com/jian887/image/upload/v1555499905/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/clip_image039_blafu3.gif" alt="img"></p>
+<p>FLEX的输入文件称为LEX源文件，它内含正规表达式和对相应模式处理的C语言代码。LEX源文件的扩展名习惯上用.l表示。FLEX通过对源文件的扫描自动生成相应的词法分析函数 int yylex()，并将之输出到名规定为lex.yy.c的文件中。实用时，可将其改名为lexyy.c。该文件即为LEX的输出文件或输出的词法分析器。也可将 int yylex()加入自已的工程文件中使用。</p>
+<p>2． 模式简介</p>
+<p>LEX的模式的格式(也称为规则)是机器可读的正规表达式，正规表达工是用连接、并、闭包运算递归生成的。为了方便处理，LEX在此基础上增加了一些运算。下列是按运算优先级由高往低排列的LEX的正规表达式的运算符。</p>
+<p>“[]^-?.*+|()/${}%&lt;&gt;</p>
+<p>关于LEX的模式定义，可参见下页附表1.1</p>
+<p>3．LEX源文件格式</p>
+<p>LEX对源文件的格式要求非常严格，比如若将要求顶行书写的语句变成非顶行书写就会产生致命错误。而LEX本身的查错能力很弱，所以书写时一定要注意。</p>
+<p>LEX的源文件由三个部份组成，每个部分之间用<strong>顶行的</strong>“%%”分割，其格式如下：</p>
+<p>定义部份</p>
+<p>％％</p>
+<p>规则部份　</p>
+<p>％％</p>
+<p>用户附加C语言部份</p>
+<p>​      3.1定义部份</p>
+<p>定义部份由C语言代码、模式的宏定义、条件模式的开始条件说明三部份组成。</p>
+<p>其中，C代码部份由顶行的%{和}%引入，LEX扫描源文件时将%{和}%之间的部分原封不动的拷贝到输出文件lex.yy.c中.</p>
+<p>附表1.1  LEX 的模式定义</p>
+<table>
+<thead>
+<tr>
+<th>模    　式</th>
+<th>解    释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>匹配单个字符x。(也可将模式写为”x”)</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行符’\n’之外的任意字符</td>
+</tr>
+<tr>
+<td>[xyz]</td>
+<td>匹配x、y或z</td>
+</tr>
+<tr>
+<td>[abj-oZ]</td>
+<td>匹配字符集:a、b、Z以及j到o之间的字母(包括j和o)</td>
+</tr>
+<tr>
+<td>[^A-Z]</td>
+<td>匹配字符集A到Z之间字符集的补集。即除大写字母的其它字符</td>
+</tr>
+<tr>
+<td>[^A-Z\n]</td>
+<td>匹配除大写字母和换行符之外的其它字符</td>
+</tr>
+<tr>
+<td>r*</td>
+<td>R是正规表达式，r*匹配0个或多个r</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>R是正规表达式，r+匹配1个或多个r</td>
+</tr>
+<tr>
+<td>r?</td>
+<td>R是正规表达式，r?匹配0个或1个r</td>
+</tr>
+<tr>
+<td>r{2,5}</td>
+<td>R是正规表达式，r{2,5}匹配2个到5个r</td>
+</tr>
+<tr>
+<td>r{2,}</td>
+<td>R是正规表达式，r{2,}匹配2个或以上r</td>
+</tr>
+<tr>
+<td>r{4}</td>
+<td>R是正规表达式，r{4}匹配4个r</td>
+</tr>
+<tr>
+<td>{name}</td>
+<td>name是在定义部份出现的模式宏名，在规则部份将之替换为模式</td>
+</tr>
+<tr>
+<td>“[xyz]\”foo”</td>
+<td>匹配字符串[xyz]”foo</td>
+</tr>
+<tr>
+<td>\x</td>
+<td>如x是’a’、’b’、’f’、’n’、’r’或’t’，\x为转义字符，定义同ANSI   C,否则，匹配字符x.此方法用于匹配正规表达式的运算符</td>
+</tr>
+<tr>
+<td>\123</td>
+<td>匹配八进制ASCII码为123的字符</td>
+</tr>
+<tr>
+<td>\x2a</td>
+<td>匹配十六进制ASCII码为2a的字符</td>
+</tr>
+<tr>
+<td>(r)</td>
+<td>匹配r,优先运算正规式r</td>
+</tr>
+<tr>
+<td>Rs</td>
+<td>匹配正规式r和s的连接</td>
+</tr>
+<tr>
+<td>r\</td>
+<td>s</td>
+<td>匹配正规式r或s</td>
+</tr>
+<tr>
+<td>r/s</td>
+<td>匹配正规式r,但是，r之后一定要出现正规式s。称s为r的尾部条件</td>
+</tr>
+<tr>
+<td>^r</td>
+<td>匹配正规式r,但是，r一定要出现在行首</td>
+</tr>
+<tr>
+<td>r$</td>
+<td>匹配正规式r,但是，r一定要出现在行尾</td>
+</tr>
+<tr>
+<td><s>r</s></td>
+<td>匹配正规表达式r,但是一定要在开始条件s激活之后</td>
+</tr>
+<tr>
+<td>&lt;<eof>&gt;</eof></td>
+<td>匹配文件结束标志</td>
+</tr>
+</tbody>
+</table>
+<p>模式的宏定义部份如同C语言中的宏定义，通过宏名定义一个模式，这样，可以简化在源文件中多次出现的正规表达式的书写。格式为：</p>
+<p>宏名1 宏定义1</p>
+<p>宏名2 宏定义2　</p>
+<p>……</p>
+<p>例如：</p>
+<p>DIGIT  [0-9]</p>
+<p>ID     [A-Za-z][A-Za-z0-9_]*</p>
+<p>宏名是以字母和下划线”_”开始，以字母、数字和下划线组成的字符串，且大小写敏感。宏名必须顶行写，宏名和宏定义必须写在同一行上。宏名和宏定义之间以不包括换行符的白字符(空格符、TAB符、换行符)隔开。</p>
+<p>条件模式的开始条件说明格式如下：</p>
+<p>％start s1 s2 s3</p>
+<p>其中，s1、s2、s3为条件名。必须为大小写敏感的标识符。关于条件模式的使用，我们将在后面作说明。</p>
+<p>3.2 规则部份</p>
+<p>规则部份是LEX源文件的核心部份，它包括一组模式和在生成分析器识别相应模式后对相应模式进行处理的C语言动作(Action)。格式如下</p>
+<p>C语言代码</p>
+<p>模式1  动作1</p>
+<p>模式2  |</p>
+<p>模式3  动作3</p>
+<p>……</p>
+<p>同定义部分一样，C语言代码必须出现在第一个模式之前，包括在%{和}%之中，且%{必须顶行书写。%{和}%之间的代码部份可用来定义yylex()用到的局部变量。</p>
+<p>模式必须顶行书写。模式可为正规式或用{}括起且在定义部份定义过的宏名。动作为用{}括起的C代码。<strong>且开始括号{与模式之间用白字符隔开，且须和模式在同一行上</strong>。注意，在模式后加一|表示模式2和3采用同一动作3.|和模式2以白字符隔开。</p>
+<p>3.3用户附加C语言部份</p>
+<p>LEX对此部份不作任何处理，仅仅将之直接拷贝到输出文件lex.yy.c的尾部。在些部份，可定义对模式进行处理的C语言函数、主函数和yylex要调用的函数yywrap()等。如果用户在其它C模块中提供这些函数，用户代码部份可以省略。</p>
+<p>3.4  源文件格式小结　</p>
+<p>　　综上所述，LEX源文件详细格式如下：</p>
+<p>　%{</p>
+<p>​     /<em>此模块为定义模块中Ｃ语言代码部份，在下面填入相应C代码</em>/</p>
+<p>}%</p>
+<p>模式宏名1  模式1</p>
+<p>模式宏名2  模式2</p>
+<p>……</p>
+<p>%start s1 s2 s3</p>
+<p>%%</p>
+<p>%{</p>
+<p>   /<em>此模块为规则模块中Ｃ语言代码部份，在下面填入相应C代码</em>/</p>
+<p>}%</p>
+<p>模式1   动作1</p>
+<p>模式2   动作2</p>
+<p>……</p>
+<p>%%</p>
+<p>/<em>此模块为用户附加C语言部份，在下面填入相应C代码</em>/</p>
+<p>注意：以上三部份及其中任何一子部份，均可省去。且如无第三部分，第二个%%也可省去，但第一个%%决不可省。</p>
+<p>４．LEX的工作原理</p>
+<p>  　  　 LEX通过对源文件的扫描，经过宏替换后，将规则部份的正规表达式转换成与之相应的DFA，并由之产生一个名为int yylex()的词法分析函数，将之拷贝到输出文件lex.yy.c中。由于考虑到C代码的可移植性和运行效率问题，lex.yy.c中大量使用了宏定义，且文件较大(30-50kb)。因此，几乎是不可读的。但是，其可移植性相当好。</p>
+<p>　　　　lex.yy.c中定义了很多用户可定义的全局变量，以及在LEX源文件的动作中可调用的函数和宏。但是，由于lex.yy.c太过复杂，建议初学者不要随意修改它。用户在了解其的前提下，可在其它C模块中引用之。</p>
+<p>５．二义性问题的解决</p>
+<p>　　　  yylex()函数被调用之后，它首先检查全局文件指针变量yyin是否有定义，如有，则将之设置为将要扫描的文件指针。如无，则设置为标准输入文件stdin.同理，如全局文件指针变量yyout无定义，则将之设置为标准输出文件stdout。</p>
+<p>​         若有多个模式与被扫描文件中的字符串相匹配，则yylex()执行能匹配最长字符串的模式，称为“最长匹配原则”；若还有多个模式匹配长度相同的字符串，则yylex()选择在LEX源文件中排列最前面的模式进行匹配，称为“最先匹配原则”。yylex()常通过超前搜索一个字符来实现这样的原则，如果使用超前搜索匹配了某一模式，则yylex()在进行下一次分析前，将回退一个字符。见下例：</p>
+<p>　　　　%%</p>
+<p>​        program  {printf(“keyword:%s!\n”,yytext); /<em>模式一</em>/}</p>
+<p>​        procedure  {printf(“keyword:%s!\n”,yytext); /<em>模式二</em>/}</p>
+<p>​        [a-z][a-z0-9]<em>  {printf(“identifier:%s!\n”,yytext); /</em>模式三*/}</p>
+<p>​        %%</p>
+<p>​        如输入串为”programming”，yylex()分析到子串”program”时，有模式一和三可以匹配，但根据最长搜索原则，发现在继续读入输入串时，还可匹配模式三。这样，将输出”identifier:programming!”。如输入串为”program”,则按最先匹配原则，模式一与之匹配，输出”keyword:program!”。注意，若将模式一和模式三在源文件中次序弄反，则模式一永远也得不到匹配。</p>
+<p>　　　　若无模式可匹配输入串，则使用缺省规则，即将输入串原样拷贝至输出文件yyout中。</p>
+<p>６．常用全局变量和宏</p>
+<p>​        lex.yy.c中常用全局变量、函数和宏很多，在此仅指出一些最常用的，若需要更详细信息，请阅读源文件。</p>
+<p>(1) FILE <em>yyin,</em>yyout:为指向字符输入和结果输出文件的指针。如用户未对其定义，则设为标准输入文件stdin和stdout。</p>
+<p>(2) int yylex():为词法分析程序，它自动移动文件指针yyin和yyout。<strong>在定义模式动作时，用户可用return语句结束yylex(),return 必须返回一整数。由于yylex()的运行环境都是以全局变量的方式保存，因此，在下一次调用yylex()时，yylex()可从上次扫描的断点处继续扫描，在语法分析时，可利用这一特性</strong>。若用户未定义相应的return语句，则yylex()继续分析被扫描的文件，直到碰到文件结束标志EOF。在读到EOF时，yylex()调用int yywrap()函数(该函数用户必须提供)，若该函数返回非0值，则yylex()返回0而结束。否则，yylex()继续对yyin指向的文件扫描。</p>
+<p>(3) char *yytext:存放当前被识别的词形。</p>
+<p>(4) int yyleng:存放字符串yytext的长度。</p>
+<p>(5) int yywrap():参见(2)</p>
+<p>(6) yymore()：将当前识别的词形保留在yytext中，分析器下次扫描时的词形将加追加在yytext中。例模式定义如下</p>
+<p>……</p>
+<p>hello  {printf(“%s!”,yytext);yymore();}</p>
+<p>world  {printf(“%s!”,yytext);}</p>
+<p>……</p>
+<p>当输入串为”helloworld”时，将输出”hello!helloworld!”</p>
+<p>(7) yyless(int n):回退当前识别的词形中n个字符到输入中</p>
+<p>(8) unput(char c):回退字符c到输入，它将作为下一次扫描的开始字符</p>
+<p>(9) input():让分析器从输入缓冲区中读取当前字符，并将yyin指向下一字符</p>
+<p>(10)     yyterminate():中断对当前文件的分析，将yyin指向EOF。</p>
+<p>(11)     yyrestart(FILE * file):重新设置分析器的扫描文件为file</p>
+<p>(12)     ECHO:将当前识别的字符串拷贝到yyout</p>
+<p>(13)     BEGIN:激活开始条件对应的模式</p>
+<p>(14)     REJECT:放弃当前匹配的字符串和当前的模式，让分析器重新扫描当前的字符串，并选择另一个最佳的模式再次进行匹配。</p>
+<p>7.条件模式</p>
+<p>　　　　LEX提供控制模式在一定状态下使用的功能，称为条件模式。LEX首先在定义部份通过%start来定义条件句。在规则部份可通过宏</p>
+<p>BEGIN 条件名　来激活条件。BEGIN　INITIAL或BEGIN  0将休眠所有的条件模式，使分析器回到开始状态。</p>
+<p>例：将输入文件中的单词”magic” 作如下处理：识别”magic”时，如”magic”所在行行首为字符’a’,则输出”first”;若为’b’,则输出”second”;否则，输出”magic”。如不用条件模式，LEX源文件可这样写：</p>
+<p>%{int flag;}%</p>
+<p>%%</p>
+<p>^a    {flag=’a’;ECHO;}</p>
+<p>^b    {flag=’b’;ECHO;}</p>
+<p>\n    {flag=0;ECHO;}</p>
+<p>magic {</p>
+<p>​       switch(flag)</p>
+<p>​        {</p>
+<p>​          case ‘a’:printf(“first”);break;</p>
+<p>​          case ‘b’:printf(“second”);break;</p>
+<p>​          default :ECHO;break;</p>
+<p>​        }</p>
+<p>​      </p>
+<p>​      }</p>
+<p>%%</p>
+<p>如使用条件模式,则上述源文件可简化为</p>
+<p>%start AA BB CC</p>
+<p>%%</p>
+<p>^a  {ECHO;BEGIN AA;}</p>
+<p>^b  {ECHO;BEGIN BB;}</p>
+<p>\n  {ECHO;BEGIN 0;}</p>
+<p><aa>magic  {printf(“first”);}</aa></p>
+<p><bb>magic  {printf(“second”);}</bb></p>
+<p>%%</p>
+<p>8．示例</p>
+<p>例一：编制LEX源程序,分别统计文本文件a.txt中出现的标识符和整数个数,并显示之。标识符定义为字母开头，后跟若干个字母，数字或下划线。整数可以带+或-号，也可不带，且不以0开头。非单词和非整数则忽略不记，将之滤掉不显示。</p>
+<p>设LEX源文件名为count.l.文件内容如下</p>
+<p>​         </p>
+<p>​        %{</p>
+<p>​           #include “stdio.h”</p>
+<p>​           #include “stdlib.h”</p>
+<p>​           int num_num=0,num_id=0; </p>
+<p>%}</p>
+<p>INTEGER [-+]?[1-9][0-9]*</p>
+<p>ID      [a-zA-Z][a-zA-Z_0-9]*</p>
+<p>SPACE   [ \n\t]</p>
+<p>%%</p>
+<p>{INTEGER}    {                                                                        num_num++;</p>
+<p>​                            printf(“(num=%d)”,atoi(yytext));//打印数字值</p>
+<p>​                            /<em>数字数加一</em>/</p>
+<p>​                       }</p>
+<p>{ID}         {</p>
+<p>​                                                                          num_id++;</p>
+<p>​                            printf(“(id=%s)”,yytext);</p>
+<p>​                      }</p>
+<p>　　　　{SPACE} |</p>
+<p><strong>.</strong>            {</p>
+<p>​                     //什么也不做,滤掉白字符和其它字符      </p>
+<p>​                    }</p>
+<p>%%                 </p>
+<p>void main()</p>
+<p>{</p>
+<p>​          yylex();</p>
+<p>​          printf(“num=%d,id=%d”,num_num,num_id);</p>
+<p>}</p>
+<p>int yywrap()//此函数必须由用户提供</p>
+<p>{return 1;}</p>
+<p>设count.l所在目录为c:\test，且已用path命令指定flex.exe所在目录。则调用命令</p>
+<p>c:\test&gt; flex count.l后可在c:\test目录下得到一文件lex.yy.c，打开C环境，新建工程文件my.prj(TURBOC 或BORLAND C下后缀为.prj，VC下后缀为.dsw),将lex.yy.c加入工程文件中,编译运行可得可执行文件my.exe.若需分析从标准输入中输入的字符串,运行my.exe即可.若需分析放在其它文件中的串,如设在文件hello.txt中,则运行my.exe&lt;hello.txt即可.</p>
+<p>例2:编制一LEX源程序,分别求出文件hh.c中字母,数字,回车符的个数.源程序如下:</p>
+<p>%{</p>
+<p>  #include “stdio.h”</p>
+<p>  #include “stdlib.h”</p>
+<p>  int num_digit=0,num_letter=0,num_enter=0; </p>
+<p>%}</p>
+<p>DIGIT   [0-9]</p>
+<p>LETTER  [A-Za-z]</p>
+<p>%%</p>
+<p>{DIGIT}  {num_digit++;}</p>
+<p>{LETTER} {num_letter++;}</p>
+<p>\n       {num_enter++;}</p>
+<p>.        {/<em>其它字符不作处理</em>/}</p>
+<p>%%                 </p>
+<p>void main()</p>
+<p>{</p>
+<p>  yyin=fopen(”hh.c”,r);</p>
+<p>yylex();</p>
+<p>  printf(“num=%d,letter=%d,enter=%d”,</p>
+<p>​           num_digit,num_letter,num_enter);</p>
+<p>}</p>
+<p>int yywrap()//此函数必须由用户提供</p>
+<p>{　</p>
+<p>　 return 1;</p>
+<p>}</p>
+<p><strong>附录二   语法分析器生成工具YACC简介</strong></p>
+<p>1．YACC简介</p>
+<p>   YACC是语法分析器生成工具中最著名的，也是最早开发出来的一个。该工具和LEX都是源于贝尔实验室的UNIX计划，如今YACC也成为了UNIX系统的标准实用程序。它大大地简化了在语法分析器设计时的手工劳动，将程序设计语言编译器的设计重点放在语法制导翻译上来，从而方便了编译器的设计和对编译器代码的维护。Berkeley大学开发了和YACC完全兼容，但代码完全不一样的语法分析器生成工具BYACC，GNU也推出了和YACC兼容的语法分析器生成工具BISON，这也是我们实验时使用的工具，通过这个软件，我们可以学习YACC。</p>
+<p>​               语法分析是对输入文件第二次重组，输入文件是有序的字符串，词法分析是第一次重组，即将有序的字符串转换成单词序列；而语法分析则是在第一次重组的基础上将单词序列转换为语句，它使用的是上下无关文法的形式规则。正如我们所知，一般的程序设计语言的形式方法大多是LALR（1）文法，它是上下无关文法的一个子类。多数程序设计语言的语法分析都采用LALR（1）分析表，YACC也正是以LALR（1）文法为基础。类似于LEX，它通过对输入的形式文法规则进行分析产生LALR（1）分析表，输出以该分析表驱动的语法分析器C语言源程序。YACC的输入文件称为YACC 源文件，它包含一组以巴克斯-鲁尔范式（BNF）书写的形式文法规则以及对每条规则进行语义处理的C语言语句。YACC源文件的文件后缀名一般用.y表示。YACC的输出文件一般有两个，在BISON下：一个是后缀为.c的包含有语法分析函数int yyparse()的C语言源程序xxx.tab.c(其中xxx是源文件的文件名)，称为<strong>输出的语法分析器</strong>；另一个是包含有源文件中所有终结符(词法分析中的单词)编码的宏定义文件xxx.tab.h(当BISON加参数-d时生成)，称为<strong>输出的单词宏定义头文件</strong>。</p>
+<p>2．YACC的源文件格式</p>
+<p>YACC的源文件部分由三个部分组成，即</p>
+<p>定义部分</p>
+<p>%%</p>
+<p>语法规则部分</p>
+<p>%%</p>
+<p>用户附加C语言代码部分</p>
+<p>不象LEX对源文件格式有严格的要求，任何YACC指令都可以非顶行书写。在介绍YACC源文件格式之前，先来回顾有关形式语法的基本概念。</p>
+<p>(1) 单词和非终结符。</p>
+<p>在YACC源文件中，有两种方式表示的单词（终结符）：一种是在定义部分通过YACC指令%token定义文法中出现的单词，称为有名单词，如%token NUMBER就定义了一有名单词NUMBER，可用它来表示整数的种别码；另一种是单个字符，称为字符单词，如单个字符’+’、’-’,’a’,’4’,’!’等，它们本身作为终结符出现在规则部分，不需要在定义部分说明，可直接加单引使用，如同C语言的字符常量。</p>
+<p>非终结符一般为不加引号的标识符，习惯上用小写字母组成的字符串表示。如可用exp表示用来表示表达式的非终结符。</p>
+<p>YACC在对源文件进行编译时，将对所有的单词和非终结符进行编码，并用该编码建立分析表和语法分析器。单词的编码原则是：字符单词使用其对应的ASCII码，有名单词则由分析器进行编码。用户在对有名单词进行命名时，一定要注意不要和使用该单词名的C源程序中已有的宏名相同，否则在编译该C模块时是会产生宏定义冲突的。</p>
+<p>(2) 定义部分</p>
+<p>YACC的定义部分比LEX复杂，在此并未给出其全部规则，只是给出了实验中要用到的部分。有兴趣的同学可以查阅有关资料或与我们联系。</p>
+<p>定义部分结构如下：</p>
+<p>%{C语言代码部分%}</p>
+<p>语义值数据类型定义</p>
+<p>单词定义</p>
+<p>非终结符定义</p>
+<p>优先级定义</p>
+<p>其中，C语言代码部分同LEX，语义值数据类型定义部分定义了进行语法分析时语义栈中元素的数据类型，可用宏YYSTYPE定义。本书例中数据类型为double型(算术表达式的语义值)，可直接将之放入到C语言代码部分中，如可在C语言代码部分中加入一句#define YYSTYPE double。非终结符一般不需要作声明，在此略过不谈。</p>
+<p>结合次序和优先级别的定义，将让YACC在编译源文件时，面对由文法的二义性引起的移进-归约冲突时，能正确的选择移进或归约。如我们知道，二元’+’和’-‘的优先级低于’*’和’/’，它们优先级又都低于一元减(取负)’-‘,且它们都是左结合的，则我们可以这么定义：</p>
+<p>%left ‘+’ ‘-‘</p>
+<p>%left ‘*’ ‘/’</p>
+<p>%left UMINUS /<em>虚拟单词，它和一元减有相同的优先级别和结合次序</em>/</p>
+<p>上面的定义说明了它们的优先级，规则是越在后面定义的优先级越高。而%left说明了是左结合的。注意一元减用了个虚拟单词UMINUS。在规则部分，对一元减作如下处理：</p>
+<p>exp :</p>
+<p>   | ‘-‘ exp %prec UMINUS</p>
+<p>   ……</p>
+<p>说明了一元减’-’就是前面定义的UMINUS。</p>
+<p>这样就区别了同一算符在不同上下文环境中的优先级别和结合次序。</p>
+<p>(3) 语法规则部分</p>
+<p>YACC利用BNF范式定义形式语言的递归生成规则。YACC采用下述符号作为每个产生式的控制符号：</p>
+<p>冒号‘：’分割产生式的左右两个部份；竖杠‘|’分割同一非终结符对应的多条规则；分号‘;’结束一个产生式。注意：在书写语法规则时一定要区别单词、非终结符和上述控制符号，否则将会导致出错。综上，每个产生式的规则如下：</p>
+<p>非终结符： 规则一</p>
+<p>​         | 规则二</p>
+<p>​         ………</p>
+<p>​         |规则n</p>
+<p>其中，每个规则是由单词和非终结符组成的语法符号串，每个语法符号用<strong>白字符</strong>分隔。如产生式exp-&gt;exp+exp|exp-expNUM可表示为</p>
+<p>exp:  exp  ‘+’  exp</p>
+<p>   |  exp  ‘-‘  exp</p>
+<p>   |  NUM</p>
+<p>   ;</p>
+<p>规则部分可以是空串，如产生式input-&gt;ε可表示为</p>
+<p>input  : /<em>空串</em>/</p>
+<p>;</p>
+<p>加注释的目的是为了便于阅读。</p>
+<p>YACC最欢迎的是左递归文法，而用右递归文法则可能会导致分析栈溢出，故要尽量避免用右递归文法。</p>
+<p>3．语义定义</p>
+<p>​       YACC输出的分析器不仅要识别形式语言，更重要的是要完成语义的翻译。YACC提供一种语法规则制导语义定义的功能，它通过在源程序的语法规则中嵌入求解语义值或者完成相应语义动作的C语言代码，从而定义每个语法规则的语义。</p>
+<p>​        </p>
+<p>​        (1)单词（终结符）语义值的计算</p>
+<p>输出分析函数int yyparse()在需要向前查看单词或者移进一个单词时将调用函数int yylex(),此函数可通过由词法分析器自动生成，也可手动生成。本书中两例比较简单，采用的是手动生成int yylex（）的方法。用户必须在yylex（）中计算出当前单词的语义值，将该值保存在YACC输出的分析器提供的一个类型是YYSTYPE的全局变量yylval中。注意yyparse()在移进一个单词到分析栈的同时，将yylval的值拷贝到语义栈中。我们不用管yylval是如何进栈的，只需知道,一旦在yylex()中将一个值赋给yylval后，yyparse()每调用yylex()一次,就将yylval进栈一次。</p>
+<p>​       </p>
+<p>(2)非终结符语义值的计算</p>
+<p>计算非终结符的语义值一般随归约动作同时进行，由于归约是利用语法规则进行归约的，所以YACC提供在每个语法规则的尾部附加C语言代码的功能，称为<strong>语义动作</strong>，当分析器用该规则进行归约时，将执行该段代码。利用这段代码和语义栈中已知语法符号的语义值，可完成对归约的非终结符的语义值的计算。语义动作由花括号引入，格式如下：</p>
+<p>非终结符: 规则一 {动作一}</p>
+<p>​      |   规则二 {动作二}</p>
+<p>​      …….</p>
+<p>​      |   规则n  {动作n}</p>
+<p>​     ;</p>
+<p>YACC提供一种简单的方式让用户在语义动作中访问语义栈中栈顶元素的语义值。设当前规则中有n个语法符号，如：</p>
+<p>非终结符: S1 S2 ……Sn</p>
+<p>对以上产生式进行归约时，语义栈自底向顶分别排列为……S1,S2,……Sn，其相应的语义值可用……$1，$2……$n表示，非终结符对应的语义值用$$表示，在完成语义分析动作，即对$$的处理后，将$$的内容拷贝到语义栈中。如：</p>
+<p>exp : ……</p>
+<p>​    | exp ‘+’ exp {$$=$1+$3;}</p>
+<p>   ;</p>
+<p>其中，$1和$3分别表示规则中第一个和第二个exp的语义值，$$表示非终结符exp的语义值。</p>
+<p>4．其它</p>
+<p>   YACC的语法比较复杂，用法也很灵活，如它和LEX之间预留的接口是一样的，所以还可以和LEX直接结合使用。这些内容本书均未谈及，留待有兴趣的同学自己查阅有关资料。</p>
+<p>5．示例</p>
+<p>例一：用YACC生成逆波兰表示计算器</p>
+<p>分析：逆波兰表达式文法可定义为</p>
+<p>exp-&gt;exp exp + |exp exp – </p>
+<p>|exp exp * |exp exp / |</p>
+<p>exp exp ^ |exp n |NUM </p>
+<p>​                 其中，’^’为乘幂符号,’n’为一元减,此文法为无二义性文法。</p>
+<p>​          其YACC源程序(不妨取名为rpcalc1.y)如下</p>
+<p>​          %{</p>
+<p>#define YYSTYPE double/<em> 定义表达式语义值为double型</em>/</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;math.h&gt;</p>
+<p>#include &lt;ctype.h&gt;</p>
+<p>%}</p>
+<p>%token NUM /<em>定义有名单词NUM，用来表示数的种别码</em>/</p>
+<p>%%</p>
+<p>input:  /<em>可为空串</em>/</p>
+<p>​      |input line</p>
+<p>​      ;</p>
+<p>line:  ‘\n’</p>
+<p>​      |exp ‘\n’ {printf(“\t%10.g\n”,$1);}</p>
+<p>​      ;</p>
+<p>exp:   NUM {$$=$1;}</p>
+<p>​       |exp exp ‘+’ {$$=$1+$2;}</p>
+<p>​       |exp exp ‘-‘ {$$=$1-$2;}</p>
+<p>​       |exp exp ‘<em>‘ {$$=$1</em>$2;}</p>
+<p>​       |exp exp ‘/‘ {$$=$1/$2;}</p>
+<p>​       |exp exp ‘^’ {$$=pow($1,$2);}</p>
+<p>​       |exp ‘n’     {$$=-$1;}</p>
+<p>​       ;</p>
+<p>%%</p>
+<p>main()</p>
+<p>{</p>
+<p>  printf(“\nPlease input your expression,end with ENTER &amp;&amp; CTRL+Z:\n”);</p>
+<p>  yyparse();</p>
+<p>}</p>
+<p>yyerror(char *s)</p>
+<p>/<em>此函数必须给出，为yyparse()出错时调用</em>/</p>
+<p>{</p>
+<p>  printf(“error=%s”,s);</p>
+<p>}</p>
+<p>int yylex()</p>
+<p>/<em>用户手编的词法分析器</em>/</p>
+<p>{</p>
+<p>  int c;</p>
+<p>  while((c=getchar())==’ ‘|| c==’\t’);</p>
+<p>  if(c==’.’ || isdigit(c))</p>
+<p>​    {</p>
+<p>​      ungetc(c,stdin);</p>
+<p>​      scanf(“%lf”,&amp;yylval);/<em>单词为数，将此数的值存入yylval</em>/</p>
+<p>​      return NUM;/<em>返回种别码</em>/</p>
+<p>​    }</p>
+<p>  if(c==EOF)</p>
+<p>​    return 0;</p>
+<p>  return c;/<em>其它单个字符则返回其本身，因为其本身就是自己的编码</em>/</p>
+<p>}</p>
+<p>在DOS提示符下运行</p>
+<p>C:>bison rpcalc1.y –d</p>
+<p>则在当前目录下生成新文件rpcalc1.tab.c，用TURBOC编译该文件，产生可执行文件rpcalc1.tab.exe。执行该文件</p>
+<p>C:>rpcalc1.tab</p>
+<p>则运行结果如下：</p>
+<p>Please input your expression,end with ENTER &amp;&amp; CTRL+Z:</p>
+<p>12 35 +</p>
+<p>47</p>
+<p>例二：用YACC生成中缀表达式计算器</p>
+<p>分析 中缀表达式产生式为</p>
+<p>exp-&gt;exp + exp | exp - exp| exp * exp </p>
+<p>|exp / exp  |exp ^ exp | - exp</p>
+<p>|(exp) |NUM</p>
+<p>此文法是一个二义性文法，可通过设立结合性和优先次序来消除二义性。则YACC源程序(rpcalc2.y)如下:</p>
+<p>%{</p>
+<p>#define YYSTYPE double</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;math.h&gt;</p>
+<p>#include &lt;ctype.h&gt;</p>
+<p>%}</p>
+<p>%token NUM                                                 </p>
+<p>%left ‘-‘’+’</p>
+<p>%left ‘*’’/‘</p>
+<p>%left  UMINUS /<em>虚拟单词，它和一元减有相同的优先级别</em>/</p>
+<p>%right ‘^’</p>
+<p>/<em>上面代码定义了结合性和优先级</em>/</p>
+<p>%%</p>
+<p>input:  /<em>empty string</em>/</p>
+<p>​      |input line</p>
+<p>​      ;</p>
+<p>line:  ‘\n’</p>
+<p>​      |exp ‘\n’ {printf(“\t%10.g\n”,$1);}</p>
+<p>​      ;</p>
+<p>exp:   NUM {$$=$1;}</p>
+<p>​       |exp ‘+’ exp  {$$=$1+$3;}</p>
+<p>​       |exp ‘-‘ exp  {$$=$1-$3;}</p>
+<p>​       |exp ‘<em>‘ exp  {$$=$1</em>$3;}</p>
+<p>​       |exp ‘/‘ exp  {$$=$1/$3;}</p>
+<p>​       |exp ‘^’ exp  {$$=pow($1,$3);}</p>
+<p>​       |’-‘ exp %prec UMINUS {$$=-$2;}</p>
+<p>​       |’(‘exp’)’{$$=$2}</p>
+<p>​       ;</p>
+<p>%%</p>
+<p>/<em>用户代码部分同例一相应部分，在此省略不写</em>/</p>
+<p><strong>参考文献</strong></p>
+<p>[1] 胡伦骏，徐兰芳，刘建农编.编译原理.电子工业出版社,2002,3                             </p>
+<p>[2] 吕映芝，张素琴，蒋维杜.编译原理,1998,1               </p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Boss 扫一下呗</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="两角纸 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="两角纸 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编译原理/" rel="tag"><i class="fa fa-tag"></i> 编译原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/18/编译原理实验指导书/" rel="next" title="编译原理实验指导书">
+                <i class="fa fa-chevron-left"></i> 编译原理实验指导书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/18/SQL数据库实验答案/" rel="prev" title="SQL数据库实验答案">
+                SQL数据库实验答案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="两角纸">
+            
+              <p class="site-author-name" itemprop="name">两角纸</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/jian887" title="GitHub &rarr; https://github.com/jian887" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/5231379004?is_hot=1" title="Weibo &rarr; https://weibo.com/u/5231379004?is_hot=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+	  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8511538239750965",
+    enable_page_level_ads: true
+  });
+</script>
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by 两角纸</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'WbVpdETG9NrafyGbIe8DQy6t-gzGzoHsz',
+    appKey: 'fTLtfXeEprCNM3Jud6v9ph32',
+    placeholder: '快来评论吧',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

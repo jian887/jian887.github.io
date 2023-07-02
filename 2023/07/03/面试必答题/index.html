@@ -141,7 +141,7 @@
 <meta property="og:site_name" content="两角纸博客">
 <meta property="og:description" content="spring boot启动原理首先由@SpringBootApplication注解启动，而@SpringBootApplication由@SpringBootConfiguration，@EnableAutoConfiguration，@ComponentScan这三个注解构成 @EnableAutoConfiguration最为核心，在启动时就会导入自动配置AutoConfigurationl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2023-07-02T15:06:14.308Z">
+<meta property="og:updated_time" content="2023-07-02T15:20:41.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试必答题">
 <meta name="twitter:description" content="spring boot启动原理首先由@SpringBootApplication注解启动，而@SpringBootApplication由@SpringBootConfiguration，@EnableAutoConfiguration，@ComponentScan这三个注解构成 @EnableAutoConfiguration最为核心，在启动时就会导入自动配置AutoConfigurationl">
@@ -465,7 +465,7 @@
                 
               
 
-              <time title="创建时间：2023-07-02 23:05:09 / 修改时间：15:06:14" itemprop="dateCreated datePublished" datetime="2023-07-02T23:05:09Z">2023-07-02</time>
+              <time title="创建时间：2023-07-02 23:05:09 / 修改时间：15:20:41" itemprop="dateCreated datePublished" datetime="2023-07-02T23:05:09Z">2023-07-02</time>
             
 
             
@@ -581,6 +581,20 @@
 <li>Sentinel是一个用于监控和管理Redis实例的分布式系统，它可以自动检测主节点的故障，并进行故障转移，选举新的主节点。 通过主从复制和Sentinel机制，Redis能够实现故障恢复和数据的高可用性。</li>
 </ul>
 </li>
+</ol>
+<h2 id="Spring-Boot中AOP（面向切面编程）的面试题："><a href="#Spring-Boot中AOP（面向切面编程）的面试题：" class="headerlink" title="Spring Boot中AOP（面向切面编程）的面试题："></a>Spring Boot中AOP（面向切面编程）的面试题：</h2><ol>
+<li>什么是AOP？在Spring Boot中如何实现AOP？ 答：AOP（Aspect-Oriented Programming）是一种编程范式，通过将横切关注点（如日志记录、事务管理等）从业务逻辑中剥离出来，以切面（Aspect）的方式进行统一管理和复用。在Spring Boot中，可以使用AspectJ注解或Spring的AOP框架来实现AOP。Spring的AOP框架基于动态代理机制，通过在运行时动态地创建代理对象，实现对目标方法的增强。</li>
+<li>在Spring Boot中，如何定义切面和切点？ 答：在Spring Boot中，可以使用<code>@Aspect</code>注解来定义切面，通过在切面类中的方法上使用<code>@Before</code>、<code>@After</code>、<code>@Around</code>等注解来定义切点。切点是一个匹配目标方法的表达式，可以使用<code>@Pointcut</code>注解来定义。</li>
+<li>Spring Boot的AOP支持哪些类型的通知（Advice）？ 答：Spring Boot的AOP支持以下类型的通知：<ul>
+<li>前置通知（Before Advice）：在目标方法执行前执行。</li>
+<li>后置通知（After Advice）：在目标方法执行后执行，无论方法是正常返回还是异常终止。</li>
+<li>返回通知（After Returning Advice）：在目标方法正常返回后执行。</li>
+<li>异常通知（After Throwing Advice）：在目标方法抛出异常后执行。</li>
+<li>环绕通知（Around Advice）：包围目标方法的执行，可以在方法前后进行增强处理。</li>
+</ul>
+</li>
+<li>在Spring Boot的AOP中，什么是连接点（Join Point）、切点（Pointcut）和通知（Advice）？ 答：连接点是在应用程序执行过程中能够插入切面的点，通常是方法的调用或异常处理。切点是一组连接点的集合，它定义了切面所关注的具体连接点。通知是切面在切点处执行的动作，可以是前置通知、后置通知、返回通知、异常通知或环绕通知。</li>
+<li>Spring Boot的AOP和传统的面向对象编程有什么区别？ 答：传统的面向对象编程主要关注类、对象和继承等概念，而AOP关注的是横切关注点的抽象和模块化。AOP通过切面将横切关注点从业务逻辑中剥离出来，并以模块化的方式进行管理和复用，提高了代码的可维护性和可扩展性。相比传统的面向对象编程，AOP更加关注系统的整体架构和横向的共享功能。</li>
 </ol>
 
       
@@ -866,7 +880,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-boot启动原理"><span class="nav-number">1.</span> <span class="nav-text">spring boot启动原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-boot常用注解"><span class="nav-number">2.</span> <span class="nav-text">spring boot常用注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL底层试题"><span class="nav-number">3.</span> <span class="nav-text">MySQL底层试题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis底层面试必答题"><span class="nav-number">4.</span> <span class="nav-text">redis底层面试必答题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-boot启动原理"><span class="nav-number">1.</span> <span class="nav-text">spring boot启动原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-boot常用注解"><span class="nav-number">2.</span> <span class="nav-text">spring boot常用注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL底层试题"><span class="nav-number">3.</span> <span class="nav-text">MySQL底层试题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis底层面试必答题"><span class="nav-number">4.</span> <span class="nav-text">redis底层面试必答题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot中AOP（面向切面编程）的面试题："><span class="nav-number">5.</span> <span class="nav-text">Spring Boot中AOP（面向切面编程）的面试题：</span></a></li></ol></div>
             
 
           </div>
